@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <TextView
+        android:id="@+id/lAdmin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="@+id/Logo" />
+
+    <TextView
+        android:id="@+id/lAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdmin2" />
+
+    <RadioGroup
+        android:id="@+id/listMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo">
+
+
+        <RadioButton
+            android:id="@+id/radioMaster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="#000000"
+            android:checked="true"
+            android:text="Master Data"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/radioPenjualan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000000"
+            android:checked="false"
+            android:text="Penjualan"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/radioReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000000"
+            android:text="Report"
+            android:textColor="#000000" />
+
+
+    </RadioGroup>
+
+    <ScrollView
+        android:layout_width="343dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listMenu">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/adBarangMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="barangmasuk"
+                android:text="Barang Masuk"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adDataBarang"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="databarang"
+                android:text="Data Barang"
+                app:layout_constraintTop_toBottomOf="@+id/adBarangMasuk"
+                tools:ignore="OnClick"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adSupplier"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="datasupplier"
+                android:text="Data Supplier"
+                app:layout_constraintTop_toBottomOf="@+id/adDataBarang"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adKonfirmasi"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="konfirmasipenjualan"
+                android:text="KONFIRMASI PENJUALAN"
+                app:layout_constraintTop_toBottomOf="@+id/adSupplier"
+                tools:ignore="OnClick"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adDataUser"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="ubahdataprofiladmin"
+                android:text="UBAH DATA PROFIL"
+                app:layout_constraintTop_toBottomOf="@+id/adKonfirmasi"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adPembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="pembayaran"
+                android:text="Cara Pembayaran"
+                app:layout_constraintTop_toBottomOf="@+id/adDataUser"
+                tools:ignore="OnClick"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adStok"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="datastokbarang"
+                android:text="Data Stok Barang"
+                app:layout_constraintTop_toBottomOf="@+id/adPembayaran"
+                tools:ignore="OnClick"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adPengeluaran"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:onClick="pengeluaran"
+                android:text="Pengeluaran Lainnya"
+                app:layout_constraintTop_toBottomOf="@+id/adStok"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/textTanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Cetak Laporan Bulan dan Tahun (01 2021)"
+                android:textAlignment="center"
+
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanStokHabis" />
+
+            <EditText
+                android:id="@+id/tanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="isi Bulan dan Tahun"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTanggal" />
+
+            <Button
+                android:id="@+id/adLaporanBarangMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Barang Masuk"
+                app:layout_constraintTop_toBottomOf="@+id/tanggal"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adLaporanPenjualan"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Penjualan"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanBarangMasuk"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adLaporanStokTersedia"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Stok Barang Tersedia"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanBarangDipesanStokHabis" />
+
+            <Button
+                android:id="@+id/adLaporanStokHabis"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Stok Barang Habis"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanStokTersedia" />
+
+            <Button
+                android:id="@+id/adLaporanLabaRugi"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Laba Rugi"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanPenjualan"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/adLaporanBarangDipesanStokHabis"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Barang Dipesan Stok Habis"
+                app:layout_constraintTop_toBottomOf="@+id/adPengeluaran" />
+
+            <Button
+                android:id="@+id/adLaporanDataPelanggan"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                android:text="Lap. Pembelian Ditolak"
+                app:layout_constraintTop_toBottomOf="@+id/adLaporanLabaRugi" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="keluar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/logout" />
+
+    <ImageView
+        android:id="@+id/fotoChat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:onClick="chatadmin"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/chat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

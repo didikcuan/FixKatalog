@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/abc3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu Konfirmasi"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/lKonfirmasiPembelian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lKonfirmasiPembelian2" />
+
+    <TextView
+        android:id="@+id/lKonfirmasiPembelian2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <ImageView
+        android:id="@+id/fotoPrint"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/printer" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoPrint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abc3"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/fotoTolak"
+                android:layout_width="74dp"
+                android:layout_height="45dp"
+                app:layout_constraintStart_toStartOf="@+id/fotoBuktiTF"
+                app:layout_constraintTop_toBottomOf="@+id/fotoBuktiTF"
+                app:srcCompat="@drawable/bersihkan" />
+
+            <ImageView
+                android:id="@+id/fotoKonfirmasi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="kembali"
+                android:saveEnabled="true"
+                app:layout_constraintEnd_toEndOf="@+id/fotoBuktiTF"
+                app:layout_constraintTop_toBottomOf="@+id/fotoBuktiTF"
+                app:srcCompat="@drawable/ceklis" />
+
+            <ImageView
+                android:id="@+id/fotoUserPemesan"
+                android:layout_width="174dp"
+                android:layout_height="175dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNoteleponPemesan"
+                app:srcCompat="@drawable/tambahfoto" />
+
+            <ImageView
+                android:id="@+id/fotoBuktiTF"
+                android:layout_width="282dp"
+                android:layout_height="340dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/tambahfoto" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="No Telepon"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textNoteleponPemesan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textNoteleponPemesan" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textNamaPemesan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textNamaPemesan" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Alamat"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textAlamatPemesan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textAlamatPemesan" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Total Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+            <TextView
+                android:id="@+id/textTotalQTY"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Total Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="@+id/textUkuranBarang"
+                app:layout_constraintStart_toStartOf="@+id/textUkuranBarang"
+                app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Nama Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Ukuran"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textUkuranBarang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Ukuran"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textBarang"
+                app:layout_constraintStart_toStartOf="@+id/textBarang"
+                app:layout_constraintTop_toTopOf="@+id/textView39" />
+
+            <TextView
+                android:id="@+id/textBarang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nama Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textBayar"
+                app:layout_constraintStart_toStartOf="@+id/textBayar"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Jumlah Bayar"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Status Konfirmasi"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNoResi" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:enabled="false"
+                android:text="No Resi/Ket. Penolakan"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoKonfirmasi" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Konfirmasi"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fotoKonfirmasi"
+                app:layout_constraintStart_toStartOf="@+id/fotoKonfirmasi"
+                app:layout_constraintTop_toBottomOf="@+id/fotoKonfirmasi" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tolak"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fotoTolak"
+                app:layout_constraintStart_toStartOf="@+id/fotoTolak"
+                app:layout_constraintTop_toBottomOf="@+id/fotoKonfirmasi" />
+
+            <EditText
+                android:id="@+id/textNoResi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000000"
+                android:inputType="textPersonName"
+                android:textColor="#D8000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/statusKonfirmasi"
+                app:layout_constraintStart_toStartOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+            <TextView
+                android:id="@+id/statusKonfirmasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Diverifikasi"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textBayar"
+                app:layout_constraintStart_toStartOf="@+id/textBayar"
+                app:layout_constraintTop_toTopOf="@+id/textView20" />
+
+            <TextView
+                android:id="@+id/textBayar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="16dp"
+                android:text="Jumlah Bayar"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textNoteleponPemesan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:text="telepon pembeli"
+                android:textColor="#D8151515"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textAlamatPemesan"
+                app:layout_constraintStart_toStartOf="@+id/textAlamatPemesan"
+                app:layout_constraintTop_toBottomOf="@+id/textAlamatPemesan" />
+
+            <TextView
+                android:id="@+id/textNamaPemesan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:text="nama pembeli"
+                android:textColor="#D8151515"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textTotalQTY"
+                app:layout_constraintStart_toStartOf="@+id/textTotalQTY"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalQTY" />
+
+            <TextView
+                android:id="@+id/textAlamatPemesan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:text="alamat pembeli"
+                android:textColor="#D8151515"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textTotalQTY"
+                app:layout_constraintStart_toStartOf="@+id/textTotalQTY"
+                app:layout_constraintTop_toBottomOf="@+id/textNamaPemesan" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

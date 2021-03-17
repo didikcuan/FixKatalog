@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textKodeBarangMasukList4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Total Biaya : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoAdmin"
+        app:layout_constraintTop_toTopOf="@+id/fotoAdmin" />
+
+    <TextView
+        android:id="@+id/textTotalBiaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="biaya"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textKodeBarangMasukList4"
+        app:layout_constraintTop_toTopOf="@+id/textKodeBarangMasukList4" />
+
+    <TextView
+        android:id="@+id/textTanggalPengeluaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hari/bulan/tahun"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/edit"
+        app:layout_constraintTop_toTopOf="@+id/edit" />
+
+    <TextView
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Tanggal : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textHarga2"
+        app:layout_constraintStart_toEndOf="@+id/fotoAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textKodeBarangMasukList4" />
+
+    <TextView
+        android:id="@+id/textNamaAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="admin"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textHarga2"
+        app:layout_constraintStart_toEndOf="@+id/textHarga2"
+        app:layout_constraintTop_toTopOf="@+id/textHarga2" />
+
+    <TextView
+        android:id="@+id/textHarga2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Nama Admin : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fotoAdmin"
+        app:layout_constraintStart_toEndOf="@+id/fotoAdmin" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoAdmin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/bersihkan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

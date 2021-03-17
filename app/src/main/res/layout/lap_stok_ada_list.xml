@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textNamaBarangPembayaran4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="sans-serif"
+        android:text="|"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toEndOf="@+id/textKode2"
+        app:layout_constraintTop_toTopOf="@+id/kodeStokAda" />
+
+    <TextView
+        android:id="@+id/textNamaBarangPembayaran5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:fontFamily="sans-serif"
+        android:text="|"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toEndOf="@+id/textTotalBarang"
+        app:layout_constraintTop_toTopOf="@+id/namaSA" />
+
+    <TextView
+        android:id="@+id/textNamaBarangPembayaran6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="sans-serif"
+        android:text="|"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toEndOf="@+id/textNamaPembeli"
+        app:layout_constraintTop_toTopOf="@+id/hargaJualSA" />
+
+    <TextView
+        android:id="@+id/textNamaBarangPembayaran7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="sans-serif"
+        android:text="|"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toEndOf="@+id/textHarga2"
+        app:layout_constraintTop_toTopOf="@+id/hargaPokokSA" />
+
+    <TextView
+        android:id="@+id/textNamaBarangPembayaran8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
+        android:text="|"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toEndOf="@+id/textHarga4"
+        app:layout_constraintTop_toTopOf="@+id/textHarga4" />
+
+    <TextView
+        android:id="@+id/kodeStokAda"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Kode Barang"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="@+id/textKode2"
+        app:layout_constraintTop_toTopOf="@+id/textKode2" />
+
+    <TextView
+        android:id="@+id/namaSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Barang"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="@+id/textTotalBarang"
+        app:layout_constraintTop_toTopOf="@+id/textTotalBarang" />
+
+    <TextView
+        android:id="@+id/hargaJualSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harga Jual"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="@+id/textNamaPembeli"
+        app:layout_constraintTop_toTopOf="@+id/textNamaPembeli" />
+
+    <TextView
+        android:id="@+id/hargaPokokSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harga Pokok"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="@+id/textHarga2"
+        app:layout_constraintTop_toTopOf="@+id/textHarga2" />
+
+    <TextView
+        android:id="@+id/qtySA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QTY"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textNamaBarangPembayaran8"
+        app:layout_constraintStart_toStartOf="@+id/textHarga4" />
+
+    <TextView
+        android:id="@+id/totalHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Harga Pokok"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="@+id/textHarga5"
+        app:layout_constraintTop_toTopOf="@+id/textHarga5" />
+
+    <TextView
+        android:id="@+id/textHarga2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Harga Pokok"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran6"
+        app:layout_constraintTop_toTopOf="@+id/textNamaPembeli" />
+
+    <TextView
+        android:id="@+id/textTotalBarang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:text="Nama Barang"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textKode2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Kode Barang"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textHarga5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Total Harga Pokok"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran8"
+        app:layout_constraintTop_toTopOf="@+id/textNamaPembeli" />
+
+    <TextView
+        android:id="@+id/textHarga4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="QTY"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/totalHP"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran7" />
+
+    <TextView
+        android:id="@+id/textNamaPembeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Harga Jual"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran5"
+        app:layout_constraintTop_toTopOf="@+id/textTotalBarang" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

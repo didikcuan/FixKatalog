@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    android:backgroundTint="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewEditMasukProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0%"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/fotoEditSimpanMasuk"
+        app:layout_constraintStart_toEndOf="@+id/fotoEditBersihkanMasuk"
+        app:layout_constraintTop_toTopOf="@+id/fotoEditSimpanMasuk" />
+
+    <TextView
+        android:id="@+id/namaUser9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoEditSimpanMasuk"
+        app:layout_constraintStart_toStartOf="@+id/fotoEditSimpanMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/fotoEditSimpanMasuk" />
+
+    <TextView
+        android:id="@+id/namaUser4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hapus"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoEditBersihkanMasuk"
+        app:layout_constraintStart_toStartOf="@+id/fotoEditBersihkanMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/fotoEditBersihkanMasuk" />
+
+    <ImageView
+        android:id="@+id/fotoEditBersihkanMasuk"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:onClick="hapus"
+        app:layout_constraintStart_toEndOf="@+id/fotoChatEditBarangMasuk"
+        app:layout_constraintTop_toTopOf="@+id/fotoChatEditBarangMasuk"
+        app:srcCompat="@drawable/bersihkan" />
+
+    <ImageView
+        android:id="@+id/fotoEditSimpanMasuk"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/ceklis" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:text="Edit Barang Masuk"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminEditBarangMasuk" />
+
+    <TextView
+        android:id="@+id/lAdminEditBarangMasuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/asdc" />
+
+    <TextView
+        android:id="@+id/asdc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <ImageView
+        android:id="@+id/fotoChatEditBarangMasuk"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="chatadmin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/chat" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoChatEditBarangMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:layout_editor_absoluteX="158dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/editBarangMasuk"
+                android:layout_width="174dp"
+                android:layout_height="175dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:srcCompat="@drawable/tambahfoto" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Ukuran"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meUkuran"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meTanggalMasuk" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Jumlah"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meJumlah"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meUkuran" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Hot Promo"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hasil"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/hasil" />
+
+            <TextView
+                android:id="@+id/hasil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot Promo"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintTop_toBottomOf="@+id/meJumlah" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Tanggal Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meTanggalMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meHargaBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/meNamaSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/meKodeSupplier" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/meKodeBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/meNamaSupplier" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Barang Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meKodeBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/meKodeBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Harga Barang Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meHargaBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tVNumber" />
+
+            <TextView
+                android:id="@+id/tVNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hasil Input"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/meKodeBarangMasuk"
+                app:layout_constraintTop_toBottomOf="@+id/meKodeBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meNamaBarang"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meKodeBarang" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/meKodeBarang"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/meKodeBarang" />
+
+            <EditText
+                android:id="@+id/meKodeBarang"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/meNamaBarang"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meKodeBarang" />
+
+            <EditText
+                android:id="@+id/meKodeBarangMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meNamaSupplier" />
+
+            <EditText
+                android:id="@+id/meHargaBarangMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="true"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tVNumber" />
+
+            <EditText
+                android:id="@+id/meNamaSupplier"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meKodeSupplier" />
+
+            <EditText
+                android:id="@+id/meTanggalMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="date"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meHargaBarangMasuk" />
+
+            <EditText
+                android:id="@+id/meUkuran"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meTanggalMasuk" />
+
+            <EditText
+                android:id="@+id/meJumlah"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meUkuran" />
+
+            <EditText
+                android:id="@+id/meKodeSupplier"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meNamaBarang" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/meJumlah"
+                app:layout_constraintTop_toBottomOf="@+id/hasil">
+
+                <RadioButton
+                    android:id="@+id/radioYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#000000"
+                    android:text="Yes"
+                    android:textColor="#000000" />
+
+                <RadioButton
+                    android:id="@+id/radioNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#000000"
+                    android:text="No"
+                    android:textColor="#000000" />
+            </RadioGroup>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

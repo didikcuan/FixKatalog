@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textNamaProduk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif"
+        android:text="Nama Barang"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
+        app:layout_constraintTop_toTopOf="@+id/fotoPembelianBarang" />
+
+    <TextView
+        android:id="@+id/textQTY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="total barang"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textKode2"
+        app:layout_constraintTop_toBottomOf="@+id/textNamaProduk" />
+
+    <TextView
+        android:id="@+id/textKode2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Total Barang : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
+        app:layout_constraintTop_toBottomOf="@+id/textNamaProduk" />
+
+    <TextView
+        android:id="@+id/textPembeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="nama"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textHarga2"
+        app:layout_constraintTop_toBottomOf="@+id/textQTY" />
+
+    <TextView
+        android:id="@+id/textHarga2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Nama Pembeli : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
+        app:layout_constraintTop_toBottomOf="@+id/textQTY" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoPembelianBarang"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/bersihkan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

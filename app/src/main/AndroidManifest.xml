@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fixkatalog">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cogan"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/cogan"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".LoginMenu" />
+        <activity android:name=".LoginDaftar" />
+        <activity android:name=".MenuAdmin" />
+
+        <activity android:name=".DataBarang" />
+        <activity android:name=".DataBarangEdit" />
+        <activity android:name=".DataBarangTambah" />
+
+        <activity android:name=".DataSupplierEdit" />
+        <activity android:name=".DataSupplierTambah" />
+        <activity android:name=".DataSupplier" />
+
+        <activity android:name=".BarangMasuk" />
+        <activity android:name=".BarangMasukTambah" />
+        <activity android:name=".BarangMasukEdit" />
+
+        <activity android:name=".UbahDataProfilAdmin" />
+        <activity android:name=".UbahDataProfilUser" />
+
+        <activity android:name=".DetailProduk" />
+        <activity android:name=".MenuUserPencarian" />
+
+        <activity android:name=".MenuSepatu" />
+        <activity android:name=".MenuBaju" />
+        <activity android:name=".MenuCelana" />
+        <activity android:name=".MenuSendal" />
+        <activity android:name=".MenuTas" />
+
+        <activity android:name=".ChatAdminUser" />
+        <activity android:name=".ChatAdmin" />
+        <activity android:name=".ChatUser" />
+
+        <activity android:name=".KonfirmasiPembayaran" />
+        <activity android:name=".CaraPembayaran" />
+
+        <activity android:name=".KonfirmasiPembayaranHalaman" />
+        <activity android:name=".KonfirmasiPembayaranEdit" />
+
+        <activity android:name=".KonfirmasiPembelianHalaman" />
+        <activity android:name=".KonfirmasiPembelian" />
+
+        <activity android:name=".DataStok" />
+
+        <activity android:name=".PengeluaranLainnya" />
+        <activity android:name=".PengeluaranLainnyaEdit" />
+        <activity android:name=".PengeluaranLainnyaHalaman" />
+
+        <activity android:name=".DataRating"/>
+        <activity android:name=".LapBarangMasuk"/>
+        <activity android:name=".LaporanPenjualan"/>
+        <activity android:name=".LaporanStokAda"/>
+        <activity android:name=".LaporanStokHabis"/>
+        <activity android:name=".LaporanLabaRugi"/>
+        <activity android:name=".LapBarangDipesanHabis"/>
+        <activity android:name=".LapPembelianDitolak"/>
+    </application>
+
+</manifest>

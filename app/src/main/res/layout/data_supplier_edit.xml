@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/namaUser9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoEditSupplierSimpan"
+        app:layout_constraintStart_toStartOf="@+id/fotoEditSupplierSimpan"
+        app:layout_constraintTop_toBottomOf="@+id/fotoEditSupplierSimpan" />
+
+    <TextView
+        android:id="@+id/namaUser4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hapus"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoEditSupplierBersihkan"
+        app:layout_constraintStart_toStartOf="@+id/fotoEditSupplierBersihkan"
+        app:layout_constraintTop_toBottomOf="@+id/fotoEditSupplierBersihkan" />
+
+    <ImageView
+        android:id="@+id/fotoEditSupplierBersihkan"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:onClick="hapus"
+        app:layout_constraintStart_toEndOf="@+id/fotoChatEditSupplier"
+        app:layout_constraintTop_toTopOf="@+id/fotoChatEditSupplier"
+        app:srcCompat="@drawable/bersihkan" />
+
+    <ImageView
+        android:id="@+id/fotoEditSupplierSimpan"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/ceklis" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Edit Supplier"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminEditSupplier" />
+
+    <TextView
+        android:id="@+id/lAdminEditSupplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminEditSupplier2" />
+
+    <TextView
+        android:id="@+id/lAdminEditSupplier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <ImageView
+        android:id="@+id/fotoChatEditSupplier"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="chatadmin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/chat" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoChatEditSupplier"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:layout_editor_absoluteX="158dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/editFotoSupplier"
+                android:layout_width="174dp"
+                android:layout_height="175dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eAlamatSupplier"
+                app:srcCompat="@drawable/tambahfoto" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Alamat"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eAlamatSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eTeleponSupplier" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Telepon"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eTeleponSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eNamaSupplier" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eNamaSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eKodeSupplier" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eKodeSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eKodeSupplier" />
+
+            <EditText
+                android:id="@+id/eKodeSupplier"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/eNamaSupplier"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eKodeSupplier" />
+
+            <EditText
+                android:id="@+id/eTeleponSupplier"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eNamaSupplier" />
+
+            <EditText
+                android:id="@+id/eAlamatSupplier"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eTeleponSupplier" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/persenSupplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0%"
+        android:textColor="#0C0C0C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/fotoEditSupplierSimpan"
+        app:layout_constraintStart_toEndOf="@+id/fotoEditSupplierBersihkan"
+        app:layout_constraintTop_toTopOf="@+id/fotoEditSupplierSimpan" />
+</androidx.constraintlayout.widget.ConstraintLayout>

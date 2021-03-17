@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Info Produk"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoPesan"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/totalUser2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Ada Data"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/ratingBar2"
+                app:layout_constraintStart_toStartOf="@+id/ratingBar2"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressBackgroundTint="#AFEBF3"
+                android:progressTint="#00E1FF"
+                android:stepSize="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text=":"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/stokDetailProduk"
+                app:layout_constraintTop_toTopOf="@+id/stokDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text=":"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/stokDetailProduk"
+                app:layout_constraintTop_toTopOf="@+id/namaDetailProduk" />
+
+            <TextView
+                android:id="@+id/namaUser3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:textColor="#D8151515"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/hargaDetailProduk"
+                app:layout_constraintTop_toTopOf="@+id/hargaDetailProduk" />
+
+            <TextView
+                android:id="@+id/hargaDetailProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=".............."
+                android:textColor="#D8151515"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fotoDetailProduk"
+                app:layout_constraintStart_toStartOf="@+id/fotoDetailProduk"
+                app:layout_constraintTop_toBottomOf="@+id/totalUser2" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fotoDetailProduk"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="100dp"
+                android:src="@drawable/bersihkan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detailUkuranProduk"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text=".........."
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stokDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Ukuran"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text=":"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/detailUkuranProduk"
+                app:layout_constraintTop_toTopOf="@+id/detailUkuranProduk" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Stok"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/stokDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Produk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/stokDetailProduk"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text=".........."
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/namaDetailProduk" />
+
+            <TextView
+                android:id="@+id/namaDetailProduk"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text=".........."
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hargaDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text=":"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/deskripsiDetailProduk"
+                app:layout_constraintTop_toTopOf="@+id/deskripsiDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text=":"
+                android:textColor="#D8151515"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/deskripsiDetailProduk"
+                app:layout_constraintTop_toTopOf="@+id/deskripsiDetailProduk2" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Deskripsi"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/deskripsiDetailProduk" />
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Ongkir"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/deskripsiDetailProduk2" />
+
+            <TextView
+                android:id="@+id/deskripsiDetailProduk"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="..............................................................................................."
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailUkuranProduk" />
+
+            <TextView
+                android:id="@+id/deskripsiDetailProduk2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Gratis Ongkir Keseluruh Indonesia Cakupan JandT"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deskripsiDetailProduk" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <TextView
+        android:id="@+id/namaUserInfoProduk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama User"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toBottomOf="@+id/namaUserInfoProduk2" />
+
+    <TextView
+        android:id="@+id/namaUserInfoProduk2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama User"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="@+id/Logo" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Pesan Sekarang"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back"
+        tools:ignore="OnClick" />
+
+
+    <ImageView
+        android:id="@+id/fotoPesan"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/tambahkan" />
+
+    <ImageView
+        android:id="@+id/loginDetail"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        app:srcCompat="@drawable/login" />
+</androidx.constraintlayout.widget.ConstraintLayout>

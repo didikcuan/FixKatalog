@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="kembali"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/ukuranBarang"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="Ukuran"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/namaBarang"
+                app:layout_constraintTop_toBottomOf="@+id/namaBarang" />
+
+            <EditText
+                android:id="@+id/dataAlamat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="isi alamat"
+                android:inputType="textMultiLine"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/caraPembayaran"
+                app:layout_constraintStart_toStartOf="@+id/totalBarang"
+                app:layout_constraintTop_toBottomOf="@+id/dataTelepon" />
+
+            <EditText
+                android:id="@+id/dataNama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="isi nama"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/caraPembayaran"
+                app:layout_constraintStart_toStartOf="@+id/totalBarang"
+                app:layout_constraintTop_toBottomOf="@+id/totalBarang" />
+
+            <EditText
+                android:id="@+id/dataTelepon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="isi telepon"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/caraPembayaran"
+                app:layout_constraintStart_toStartOf="@+id/totalBarang"
+                app:layout_constraintTop_toBottomOf="@+id/dataNama" />
+
+            <TextView
+                android:id="@+id/lKonfirmasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Belum Dikonfrimasi (sabar ya)"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dataAlamat" />
+
+            <TextView
+                android:id="@+id/lNotif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+
+                android:text="Jika menutup halaman ini, harap konfirmasi pembayaran anda nanti dengan cara pergi ke profil (icon disamping log out pada halaman utama). Pengiriman akan secara otomatis menggunakan jasa dari JAndT"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Upload foto bukti transfer"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoUpload" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Simpan Data Pesanan"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoSimpanData" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Jumlah bayar"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/jumlahBayar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Jumlah bayar"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Nama barang"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/namaBarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Nama barang"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textView24"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Total barang"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/totalBarang"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalBarang" />
+
+            <TextView
+                android:id="@+id/totalBarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="Total barang"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/namaBarang"
+                app:layout_constraintTop_toBottomOf="@+id/caraPembayaran" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Cara pembayaran"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/caraPembayaran"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/caraPembayaran" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Ukuran"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ukuranBarang" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Alamat"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dataAlamat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dataAlamat" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="No Telepon"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dataTelepon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dataTelepon" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Nama pembeli"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dataNama"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dataNama" />
+
+            <TextView
+                android:id="@+id/caraPembayaran"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="......................................................................................"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView26"
+                app:layout_constraintTop_toBottomOf="@+id/ukuranBarang" />
+
+            <ImageView
+                android:id="@+id/fotoBuktiPembayaran"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:srcCompat="@drawable/daftar" />
+
+            <ImageView
+                android:id="@+id/fotoUpload"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progresUploadBayar"
+                app:srcCompat="@drawable/ceklis" />
+
+            <ImageView
+                android:id="@+id/fotoSimpanData"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lKonfirmasi"
+                app:srcCompat="@drawable/ceklis" />
+
+            <ImageView
+                android:id="@+id/tambah"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="tambah"
+                app:layout_constraintBottom_toBottomOf="@+id/totalBarang"
+                app:layout_constraintEnd_toStartOf="@+id/minus"
+                app:layout_constraintTop_toTopOf="@+id/totalBarang"
+                app:srcCompat="@drawable/tambah" />
+
+            <ImageView
+                android:id="@+id/minus"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="minus"
+                app:layout_constraintBottom_toBottomOf="@+id/totalBarang"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalBarang"
+                app:srcCompat="@drawable/minus" />
+
+            <TextView
+                android:id="@+id/progresUploadBayar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0%"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoBuktiPembayaran" />
+
+            <TextView
+                android:id="@+id/jumlahdibayar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

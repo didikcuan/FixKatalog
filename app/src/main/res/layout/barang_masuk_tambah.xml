@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewTambahMasukProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0%"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/fotoTambahSimpanMasuk"
+        app:layout_constraintStart_toEndOf="@+id/fotoTambahBersihkanMasuk"
+        app:layout_constraintTop_toTopOf="@+id/fotoTambahSimpanMasuk" />
+
+    <TextView
+        android:id="@+id/namaUser9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoTambahSimpanMasuk"
+        app:layout_constraintStart_toStartOf="@+id/fotoTambahSimpanMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/fotoTambahSimpanMasuk" />
+
+    <TextView
+        android:id="@+id/namaUser4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bersihkan"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoTambahBersihkanMasuk"
+        app:layout_constraintStart_toStartOf="@+id/fotoTambahBersihkanMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/fotoTambahBersihkanMasuk" />
+
+    <ImageView
+        android:id="@+id/fotoTambahBersihkanMasuk"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:onClick="hapus"
+        app:layout_constraintStart_toEndOf="@+id/fotoChatTambahBarangMasuk"
+        app:layout_constraintTop_toTopOf="@+id/fotoChatTambahBarangMasuk"
+        app:srcCompat="@drawable/bersihkan" />
+
+    <ImageView
+        android:id="@+id/fotoTambahSimpanMasuk"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/ceklis" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:text="Tambah Barang Masuk"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminTambahBarangMasuk" />
+
+    <TextView
+        android:id="@+id/lAdminTambahBarangMasuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminTambahBarangMasuk2" />
+
+    <TextView
+        android:id="@+id/lAdminTambahBarangMasuk2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <ImageView
+        android:id="@+id/fotoChatTambahBarangMasuk"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="chatadmin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/chat" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoChatTambahBarangMasuk"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="36dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/tambahBarangMasuk"
+                android:layout_width="174dp"
+                android:layout_height="175dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:saveEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtJumlah"
+                app:srcCompat="@drawable/tambahfoto" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Ukuran"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtUkuran"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtTanggalMasuk" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Jumlah"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtJumlah"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtUkuran" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Tanggal Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtTanggalMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtHargaBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/mtNamaSupplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mtKodeSupplier" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Supplier"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/mtKodeBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mtNamaSupplier" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Barang Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtKodeBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mtKodeBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Harga Barang Masuk"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtHargaBarangMasuk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tVNumber1" />
+
+            <TextView
+                android:id="@+id/tVNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hasil Input"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/mtKodeBarangMasuk"
+                app:layout_constraintTop_toBottomOf="@+id/mtKodeBarangMasuk" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nama Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtNamaBarang"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtKodeBarang" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Kode Barang"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mtKodeBarang"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mtKodeBarang" />
+
+            <EditText
+                android:id="@+id/mtKodeBarang"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/mtNamaBarang"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtKodeBarang" />
+
+            <EditText
+                android:id="@+id/mtKodeBarangMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtNamaSupplier" />
+
+            <EditText
+                android:id="@+id/mtHargaBarangMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tVNumber1" />
+
+            <EditText
+                android:id="@+id/mtNamaSupplier"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtKodeSupplier" />
+
+            <EditText
+                android:id="@+id/mtTanggalMasuk"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="date"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtHargaBarangMasuk" />
+
+            <EditText
+                android:id="@+id/mtUkuran"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtTanggalMasuk" />
+
+            <EditText
+                android:id="@+id/mtJumlah"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtUkuran" />
+
+            <EditText
+                android:id="@+id/mtKodeSupplier"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mtNamaBarang" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

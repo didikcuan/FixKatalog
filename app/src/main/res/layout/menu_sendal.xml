@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="1dp"
+        android:layout_height="47dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barSendal" />
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <ImageView
+        android:id="@+id/Chat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="chat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Sepatu"
+        app:srcCompat="@drawable/chat" />
+
+    <ImageView
+        android:id="@+id/Sepatu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="sepatu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Baju"
+        app:srcCompat="@drawable/sepatu" />
+
+    <ImageView
+        android:id="@+id/Baju"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="baju"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView38"
+        app:srcCompat="@drawable/baju" />
+
+    <ImageView
+        android:id="@+id/Celana"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="celana"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView38"
+        app:srcCompat="@drawable/celana" />
+
+    <ImageView
+        android:id="@+id/Sendal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="sendal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Celana"
+        app:srcCompat="@drawable/sendal" />
+
+    <ImageView
+        android:id="@+id/Tas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="tas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Sendal"
+        app:srcCompat="@drawable/tas" />
+
+    <TextView
+        android:id="@+id/namaUserSendal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama User"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toBottomOf="@+id/namaUser10" />
+
+    <TextView
+        android:id="@+id/namaUser10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:text="Happy Shoping"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Menu Sendal"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewSendal"
+        app:layout_constraintEnd_toStartOf="@+id/namaUser10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+    <ImageView
+        android:id="@+id/searchNamaProduk"
+        android:layout_width="219dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:onClick="cari"
+        android:src="@drawable/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toBottomOf="@+id/namaUserSendal" />
+
+    <ImageView
+        android:id="@+id/kembaliSendal"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchNamaProduk"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/profilSendal"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/loginSendal"
+        app:layout_constraintTop_toTopOf="@+id/loginSendal"
+        app:srcCompat="@drawable/profil" />
+
+    <ProgressBar
+        android:id="@+id/barSendal"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSendal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/Chat"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        tools:layout_editor_absoluteX="93dp" />
+
+    <ImageView
+        android:id="@+id/loginSendal"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toStartOf="@+id/kembaliSendal"
+        app:layout_constraintTop_toTopOf="@+id/kembaliSendal"
+        app:srcCompat="@drawable/login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

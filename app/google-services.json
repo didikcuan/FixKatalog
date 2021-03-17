@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "287465144449",
+    "firebase_url": "https://katalogonline-21c2f-default-rtdb.firebaseio.com",
+    "project_id": "katalogonline-21c2f",
+    "storage_bucket": "katalogonline-21c2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287465144449:android:3e02e1a00c8bb46b498d80",
+        "android_client_info": {
+          "package_name": "com.example.fixkatalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287465144449-k4i89qq0gc3o7tujvnanuojc0acp9a4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARdKzSQGhnpLOpoQNisZSMLqYCpHGMF6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287465144449-k4i89qq0gc3o7tujvnanuojc0acp9a4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287465144449:android:3bf733ec39ec5270498d80",
+        "android_client_info": {
+          "package_name": "com.example.katalogonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287465144449-k4i89qq0gc3o7tujvnanuojc0acp9a4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARdKzSQGhnpLOpoQNisZSMLqYCpHGMF6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287465144449-k4i89qq0gc3o7tujvnanuojc0acp9a4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

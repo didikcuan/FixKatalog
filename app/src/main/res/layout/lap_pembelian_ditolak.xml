@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+
+    <ScrollView
+        android:id="@+id/abay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textKode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:text="Kode Barang"
+                android:textColor="#000000"
+                android:textSize="6sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/textTotalBarang2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="3dp"
+                android:text="Nama Barang"
+                android:textColor="#000000"
+                android:textSize="6sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran12"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textKode" />
+
+            <TextView
+                android:id="@+id/bulanTahunPD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:layout_marginEnd="23dp"
+                android:text="Bulan Tahun"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/acxz5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="32dp"
+                android:text="Pemilik"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/acxz6" />
+
+            <TextView
+                android:id="@+id/acxz3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:text="Pemilik"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/acxz5" />
+
+            <TextView
+                android:id="@+id/textHarga6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="3dp"
+                android:text="Harga Jual"
+                android:textColor="#000000"
+                android:textSize="6sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran14"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/acxz6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Mengetahui"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/acxz5"
+                app:layout_constraintStart_toStartOf="@+id/acxz5"
+                app:layout_constraintTop_toBottomOf="@+id/totalOmsetPD" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/acxz4" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textKode"
+                app:layout_constraintTop_toTopOf="@+id/textKode" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textTotalBarang2"
+                app:layout_constraintTop_toTopOf="@+id/textTotalBarang2" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textNamaPembeli2"
+                app:layout_constraintTop_toTopOf="@+id/textNamaBarangPembayaran13" />
+
+            <TextView
+                android:id="@+id/textHarga7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:text="Alasan Ditolak"
+                android:textColor="#000000"
+                android:textSize="6sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran15"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <ImageView
+                android:id="@+id/logo2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cogan" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textHarga6"
+                app:layout_constraintTop_toTopOf="@+id/textNamaBarangPembayaran14" />
+
+            <TextView
+                android:id="@+id/textNamaPembeli2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="3dp"
+                android:text="Tanggal"
+                android:textColor="#000000"
+                android:textSize="6sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran13"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/acxz2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text="Periode  :  "
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/bulanTahunPD"
+                app:layout_constraintTop_toTopOf="@+id/bulanTahunPD" />
+
+            <TextView
+                android:id="@+id/acxz8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:text="Perkiraan Omset"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/totalOmsetPD"
+                app:layout_constraintTop_toTopOf="@+id/totalOmsetPD" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerLapPD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+            <TextView
+                android:id="@+id/totalOmsetPD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rp.XXXXX"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/acxz6"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerLapPD" />
+
+            <TextView
+                android:id="@+id/acxz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COGAN STORE BANJARMASIN"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logo2"
+                app:layout_constraintTop_toTopOf="@+id/logo2" />
+
+            <TextView
+                android:id="@+id/acxz4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Laporan Pembelian Ditolak"
+                android:textColor="#D8151515"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo2" />
+
+            <Button
+                android:id="@+id/btnPrintPD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="print"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

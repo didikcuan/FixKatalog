@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/namaUser3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/fotoUbahPassword"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="@+id/fotoUbahPassword"
+        app:layout_constraintTop_toBottomOf="@+id/fotoUbahPassword" />
+
+    <ImageView
+        android:id="@+id/btnSimpan1"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:srcCompat="@drawable/ceklis" />
+
+    <TextView
+        android:id="@+id/namaUser6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/btnSimpan1"
+        app:layout_constraintStart_toStartOf="@+id/btnSimpan1"
+        app:layout_constraintTop_toBottomOf="@+id/btnSimpan1" />
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="98dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cogan" />
+
+    <TextView
+        android:id="@+id/lAdminUbahDataProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:text="Edit Profil"
+        android:textColor="#D8151515"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toBottomOf="@+id/lAdminUbahDataProfil2" />
+
+
+    <TextView
+        android:id="@+id/lAdminUbahDataProfil2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:text="Nama Admin"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="@+id/Logo" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="kembali"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/back"
+        tools:ignore="OnClick" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fotoUbahPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        tools:layout_editor_absoluteX="221dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Alamat"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eAlamat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eAlamat" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Tanggal Lahir"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eDate" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Email"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eEmail" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Nama Lengkap"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eNamaUser"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eNamaUser" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Telpon"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eTelpon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eTelpon" />
+
+            <EditText
+                android:id="@+id/eNamaUser"
+                android:layout_width="205dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="isi Nama Lengkap"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eEmail" />
+
+            <EditText
+                android:id="@+id/eDate"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="Isi Hari Bulan Tahun (21081997)"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eTelpon" />
+
+            <EditText
+                android:id="@+id/eTelpon"
+                android:layout_width="205dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="isi No Telpon"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eNamaUser" />
+
+            <EditText
+                android:id="@+id/eAlamat"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="isi Alamat Tinggal"
+                android:inputType="textMultiLine"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eDate" />
+
+            <EditText
+                android:id="@+id/eEmail"
+                android:layout_width="205dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="isi Password"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/fotoUser1"
+                android:layout_width="201dp"
+                android:layout_height="185dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eAlamat"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/persenUbahProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0 %"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fotoUbahPassword"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnSimpan1"
+        app:layout_constraintTop_toTopOf="@+id/btnSimpan1"
+        app:srcCompat="@drawable/reset" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
