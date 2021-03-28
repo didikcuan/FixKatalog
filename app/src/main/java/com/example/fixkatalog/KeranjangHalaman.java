@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -26,99 +27,58 @@ import com.squareup.picasso.Picasso;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class KonfirmasiPembelianHalaman extends AppCompatActivity {
+public class KeranjangHalaman extends AppCompatActivity {
 
-    TextView lAdminPembelian;
+    TextView lUserKeranjangHalaman;
 
-    RadioGroup listAdmin;
-
-    RecyclerView recyclerViewPembelian;
+    RecyclerView recyclerViewKeranjangHalaman;
     FirebaseRecyclerOptions<KonfirmasiPembelianClass> options;
     FirebaseRecyclerAdapter<KonfirmasiPembelianClass,KonfirmasiPembelianHolder> adapter;
     DatabaseReference Dataref;
 
-    ProgressBar barPembelianAdmin;
+    ProgressBar barKeranjangHalaman;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.konfirmasi_pembelian_halaman);
+        setContentView(R.layout.keranjang_halaman);
         onRestart();
         onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("tampilkeranjang");
 
-        recyclerViewPembelian=findViewById(R.id.recyclerViewPembelian);
-        barPembelianAdmin=findViewById(R.id.barPembelianAdmin);
-        lAdminPembelian=findViewById(R.id.lAdminPembelian);
+        recyclerViewKeranjangHalaman=findViewById(R.id.recyclerViewKeranjangHalaman);
+        barKeranjangHalaman=findViewById(R.id.barKeranjangHalaman);
+        lUserKeranjangHalaman=findViewById(R.id.lUserKeranjangHalaman);
 
-        recyclerViewPembelian.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerViewPembelian.setHasFixedSize(true);
+        recyclerViewKeranjangHalaman.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerViewKeranjangHalaman.setHasFixedSize(true);
 
         if(getIntent().getExtras()!=null){
 
             Bundle bundle = getIntent().getExtras();
-            lAdminPembelian.setText(bundle.getString("lnama"));
+            lUserKeranjangHalaman.setText(bundle.getString("lnama"));
 
         }else{
 
-            lAdminPembelian.setText("Nama Tidak Tersedia");
+            lUserKeranjangHalaman.setText("Nama Tidak Tersedia");
 
         }
-        TextView a = findViewById(R.id.z);
-
-        listAdmin = findViewById(R.id.listAdmin);
-        listAdmin.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int id) {
-                switch (id){
-                    case R.id.radioBelumAdmin:
-                        a.setText("1");
-                        break;
-                    case R.id.radioSudahAdmin:
-                        a.setText("2");
-                        break;
-                    case R.id.radioTolakAdmin:
-                        a.setText("3");
-                        break;
-                }
-            }
-        });
-        LoadData("1");
-        a.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString() != null)
-                {
-                    LoadData(s.toString());
-                }else
-                {
-                    LoadData("");
-                }
-            }
-        });
+        LoadData();
 
     }
 
-    private void LoadData(String data) {
+    private void LoadData() {
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
 
-        Query query=Dataref.orderByChild("status").equalTo(data);
+        Query query=Dataref.orderByChild("kodekeranjang").startAt(uid+"1").endAt(uid+"1"+"\uf8ff");
 
         options=new FirebaseRecyclerOptions.Builder<KonfirmasiPembelianClass>().setQuery(query,KonfirmasiPembelianClass.class).build();
         adapter=new FirebaseRecyclerAdapter<KonfirmasiPembelianClass, KonfirmasiPembelianHolder> (options) {
             @Override
             protected void onBindViewHolder(@NonNull KonfirmasiPembelianHolder holder, final int position, @NonNull KonfirmasiPembelianClass model) {
                 holder.textNo.setText(model.getKey());
-                String key = model.getKodekeranjang();
+
                 if (Integer.valueOf(model.getStatus()) == 1){
                     holder.textStatus.setText("Belum Dikonfirmasi");
                 }
@@ -153,9 +113,9 @@ public class KonfirmasiPembelianHalaman extends AppCompatActivity {
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(KonfirmasiPembelianHalaman.this,KonfirmasiPembelian.class);
+                        Intent intent=new Intent(KeranjangHalaman.this,KeranjangCek.class);
                         intent.putExtra("key_temp",model.getKey());
-                        String nama = lAdminPembelian.getText().toString();
+                        String nama = lUserKeranjangHalaman.getText().toString();
                         intent.putExtra("lnama", nama);
                         startActivity(intent);
 
@@ -175,13 +135,13 @@ public class KonfirmasiPembelianHalaman extends AppCompatActivity {
             }
         };
         adapter.startListening();
-        recyclerViewPembelian.setAdapter(adapter);
-        barPembelianAdmin.setVisibility(View.INVISIBLE);
+        recyclerViewKeranjangHalaman.setAdapter(adapter);
+        barKeranjangHalaman.setVisibility(View.INVISIBLE);
     }
 
     public void kembali(View view){
-        Intent intent=new Intent(KonfirmasiPembelianHalaman.this,MenuAdmin.class);
-        String nama = lAdminPembelian.getText().toString();
+        Intent intent=new Intent(KeranjangHalaman.this,MainActivity.class);
+        String nama = lUserKeranjangHalaman.getText().toString();
         intent.putExtra("lnama", nama);
         startActivity(intent);
     }

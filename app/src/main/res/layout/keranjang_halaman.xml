@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
 
-    tools:context=".MainActivity">
+    tools:context=".KeranjangHalaman">
 
 
     <ImageView
@@ -31,13 +31,13 @@
         app:srcCompat="@drawable/cogan" />
 
     <TextView
-        android:id="@+id/lAdminPembelian"
+        android:id="@+id/lUserKeranjangHalaman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="50dp"
-        android:text="Nama Admin"
+        android:text="Nama"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -52,7 +52,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="50dp"
-        android:text="Nama Admin"
+        android:text="Nama User"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -61,90 +61,34 @@
         app:layout_constraintTop_toTopOf="@+id/logo2" />
 
     <TextView
-        android:id="@+id/abc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Pilih dulu :"
-        android:textColor="#D8151515"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/listAdmin"
-        app:layout_constraintTop_toBottomOf="@+id/logo2" />
-
-    <TextView
         android:id="@+id/abc4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Menu Konfirmasi Penjualan"
+        android:text="History Belanja"
         android:textColor="#D8151515"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/lAdminPembelian"
-        app:layout_constraintStart_toStartOf="@+id/lAdminPembelian"
-        app:layout_constraintTop_toBottomOf="@+id/lAdminPembelian" />
+        app:layout_constraintEnd_toEndOf="@+id/lUserKeranjangHalaman"
+        app:layout_constraintStart_toStartOf="@+id/lUserKeranjangHalaman"
+        app:layout_constraintTop_toBottomOf="@+id/lUserKeranjangHalaman" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPembelian"
+        android:id="@+id/recyclerViewKeranjangHalaman"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listAdmin"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <RadioGroup
-        android:id="@+id/listAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo2">
-
-        <RadioButton
-            android:id="@+id/radioTolakAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:buttonTint="#000000"
-            android:checked="false"
-            android:text="Ditolak"
-            android:textColor="#000000" />
-
-        <RadioButton
-            android:id="@+id/radioBelumAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="#000000"
-            android:checked="true"
-            android:text="Belum"
-            android:textColor="#000000" />
-
-        <RadioButton
-            android:id="@+id/radioSudahAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="#000000"
-            android:text="Sudah"
-            android:textColor="#000000" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/z"
-        android:layout_width="7dp"
-        android:layout_height="20dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo2" />
 
     <ProgressBar
-        android:id="@+id/barPembelianAdmin"
+        android:id="@+id/barKeranjangHalaman"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

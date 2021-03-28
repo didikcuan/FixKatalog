@@ -126,15 +126,24 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:text="Menu Sepatu"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewSepatu"
-        app:layout_constraintEnd_toStartOf="@+id/namaUser10"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/namaUserSepatu"
+        app:layout_constraintStart_toEndOf="@+id/keranjangSepatu"
         app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+    <ImageView
+        android:id="@+id/keranjangSepatu"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:onClick="keranjang"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profilSepatu"
+        app:srcCompat="@drawable/tambahkan" />
 
     <ImageView
         android:id="@+id/searchNamaProdukSepatu"
@@ -154,7 +163,7 @@
         android:id="@+id/kembaliSepatu"
         android:layout_width="47dp"
         android:layout_height="44dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:onClick="kembali"
         app:layout_constraintEnd_toEndOf="parent"
@@ -184,7 +193,7 @@
         android:id="@+id/recyclerViewSepatu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toTopOf="@+id/Chat"
         app:layout_constraintTop_toBottomOf="@+id/Logo"
         tools:layout_editor_absoluteX="93dp" />

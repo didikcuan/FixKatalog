@@ -54,9 +54,8 @@ public class CaraPembayaran extends AppCompatActivity {
                 if (dataSnapshot.exists())
                 {
                     String carabayar=dataSnapshot.child("carabayar").getValue().toString();
-                    String notifikasi=dataSnapshot.child("notifikasi").getValue().toString();
+
                     editCaraPembayaran.setText(carabayar);
-                    editNotifikasi.setText(notifikasi);
                 }
             }
 
@@ -88,30 +87,24 @@ public class CaraPembayaran extends AppCompatActivity {
                     return;
                 }
 
-                String notifikasi = editNotifikasi.getText().toString().trim();
 
-                if (TextUtils.isEmpty(notifikasi)){
-                    editNotifikasi.setError("Tidak boleh kosong");
-                    return;
-                }
-
-                simpan(carapembayaran,notifikasi);
+                simpan(carapembayaran);
 
             }
         });
     }
 
-    private void simpan(String carapembayaran, String notifikasi) {
+    private void simpan(String carapembayaran) {
         Dataref.child(kodeCaraBayar).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataSnapshot.getRef().child("kodecarabayar").setValue(kodeCaraBayar);
                 dataSnapshot.getRef().child("carabayar").setValue(carapembayaran);
-                dataSnapshot.getRef().child("notifikasi").setValue(notifikasi);
                 Intent intent = new Intent(CaraPembayaran.this, MenuAdmin.class);
                 String nama = lCaraPembayaran.getText().toString();
                 intent.putExtra("lnama", nama);
                 startActivity(intent);
+                Toast.makeText(CaraPembayaran.this, " Data Berhasil Diedit " , Toast.LENGTH_SHORT).show();
             }
 
             @Override

@@ -45,7 +45,8 @@ public class PengeluaranLainnyaHalaman extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pengeluaran_lainnya_halaman);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("pengeluaran");
 
         fotoTambahPengeluaran=findViewById(R.id.fotoTambahPengeluaran);

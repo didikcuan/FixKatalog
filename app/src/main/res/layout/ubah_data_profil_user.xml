@@ -12,6 +12,7 @@
         android:layout_width="74dp"
         android:layout_height="45dp"
         android:onClick="konfirmasi"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/abc2"
         app:srcCompat="@drawable/tambahkan" />

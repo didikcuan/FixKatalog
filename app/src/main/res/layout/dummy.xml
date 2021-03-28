@@ -19,24 +19,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/back" />
 
-    <ImageView
-        android:id="@+id/fotoChatEditBarang2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="PindahChat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/chat" />
-
     <TextView
         android:id="@+id/lAdminEditBarangMasuk2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama Admin"
+        android:text="Menu Terusan Tolak"
         android:textColor="#D8151515"
-        android:textSize="30sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/logo3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,4 +41,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cogan" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

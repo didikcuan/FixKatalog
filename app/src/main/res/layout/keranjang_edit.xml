@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
 
-    tools:context=".KonfirmasiPembelian">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/abc3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Informasi Pembelian"
+        android:text="Kirim Bukti TF"
         android:textColor="#D8151515"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -24,50 +24,38 @@
         android:id="@+id/namaUser9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Konfirmasi"
+        android:text="Simpan"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/kpSimpan"
-        app:layout_constraintStart_toStartOf="@+id/kpSimpan"
-        app:layout_constraintTop_toBottomOf="@+id/kpSimpan" />
+        app:layout_constraintEnd_toEndOf="@+id/kPembayaranSimpan"
+        app:layout_constraintStart_toStartOf="@+id/kPembayaranSimpan"
+        app:layout_constraintTop_toBottomOf="@+id/kPembayaranSimpan" />
 
     <TextView
-        android:id="@+id/namaUser15"
+        android:id="@+id/namaUser14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tolak"
+        android:text="Bersihkan"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/kpTolak"
-        app:layout_constraintStart_toStartOf="@+id/kpTolak"
-        app:layout_constraintTop_toBottomOf="@+id/kpSimpan" />
-
-    <TextView
-        android:id="@+id/namaUser16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Print"
-        android:textColor="#D8151515"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/kpPrint"
-        app:layout_constraintStart_toStartOf="@+id/kpPrint"
-        app:layout_constraintTop_toBottomOf="@+id/kpSimpan" />
+        app:layout_constraintEnd_toEndOf="@+id/kPembayaranBersihkan"
+        app:layout_constraintStart_toStartOf="@+id/kPembayaranBersihkan"
+        app:layout_constraintTop_toBottomOf="@+id/kPembayaranSimpan" />
 
     <ImageView
-        android:id="@+id/kpPrint"
+        android:id="@+id/kPembayaranBersihkan"
         android:layout_width="74dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/kpSimpan"
-        app:srcCompat="@drawable/printer" />
+        app:layout_constraintTop_toTopOf="@+id/kPembayaranSimpan"
+        app:srcCompat="@drawable/bersihkan" />
 
     <ImageView
-        android:id="@+id/kpSimpan"
+        android:id="@+id/kPembayaranSimpan"
         android:layout_width="74dp"
         android:layout_height="45dp"
         android:layout_marginEnd="32dp"
@@ -76,22 +64,14 @@
         app:srcCompat="@drawable/ceklis" />
 
 
-    <ImageView
-        android:id="@+id/kpTolak"
-        android:layout_width="74dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintStart_toEndOf="@+id/kpPrint"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/bersihkan" />
 
     <TextView
-        android:id="@+id/lPengguna"
+        android:id="@+id/lUserPembayaranEdit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="50dp"
-        android:text="Nama Admin"
+        android:text="Nama User"
         android:textColor="#D8151515"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -134,17 +114,16 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/kpPembayaran"
-                android:layout_width="282dp"
-                android:layout_height="360dp"
+                android:id="@+id/kPembayaran"
+                android:layout_width="174dp"
+                android:layout_height="175dp"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="100dp"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26"
                 app:srcCompat="@drawable/tambahfoto" />
 
             <TextView
@@ -152,76 +131,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="No Telepon"
                 android:textColor="#D8151515"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/kNoTelepon"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+                app:layout_constraintTop_toTopOf="@+id/kNoTelepon" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Pilih foto bukti tf"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/kPembayaran"
+                app:layout_constraintStart_toStartOf="@+id/kPembayaran"
+                app:layout_constraintTop_toBottomOf="@+id/kNoTelepon" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="Nama"
                 android:textColor="#D8151515"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/kNamaPembeli"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kpJumlahBayar" />
-
-            <TextView
-                android:id="@+id/kpNama"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Nama"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/kpJumlahBayar"
-                app:layout_constraintStart_toStartOf="@+id/kpJumlahBayar"
-                app:layout_constraintTop_toBottomOf="@+id/kpJumlahBayar" />
-
-            <TextView
-                android:id="@+id/kpAlamat"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Alamat"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/kpJumlahBayar"
-                app:layout_constraintStart_toStartOf="@+id/kpJumlahBayar"
-                app:layout_constraintTop_toTopOf="@+id/textView43" />
-
-            <TextView
-                android:id="@+id/kpNoTelepon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Nama"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/kpJumlahBayar"
-                app:layout_constraintStart_toStartOf="@+id/kpJumlahBayar"
-                app:layout_constraintTop_toTopOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/kJumlahBayar" />
 
             <TextView
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="Alamat"
                 android:textColor="#D8151515"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/kAlamatPembeli"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toTopOf="@+id/kAlamatPembeli" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -234,18 +189,18 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kpCaraPembayaran" />
+                app:layout_constraintTop_toBottomOf="@+id/kCaraPembayaran" />
 
             <TextView
-                android:id="@+id/kpJumlahBayar"
+                android:id="@+id/kJumlahBayar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Jumlah Bayar"
                 android:textColor="#D8151515"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/kpCaraPembayaran"
-                app:layout_constraintStart_toStartOf="@+id/kpCaraPembayaran"
+                app:layout_constraintEnd_toEndOf="@+id/kCaraPembayaran"
+                app:layout_constraintStart_toStartOf="@+id/kCaraPembayaran"
                 app:layout_constraintTop_toTopOf="@+id/textView12" />
 
             <TextView
@@ -259,48 +214,10 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView30" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Status"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kpKeterangan" />
-
-            <TextView
-                android:id="@+id/textView34"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Ket./No. Resi"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kpPembayaran" />
-
-            <TextView
-                android:id="@+id/kpStatus"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Status"
-                android:textColor="#D8151515"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/kpCaraPembayaran"
-                app:layout_constraintStart_toStartOf="@+id/kpCaraPembayaran"
-                app:layout_constraintTop_toTopOf="@+id/textView30" />
-
-            <TextView
-                android:id="@+id/kpCaraPembayaran"
+                android:id="@+id/kCaraPembayaran"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -314,25 +231,67 @@
                 app:layout_constraintTop_toTopOf="@+id/textView39" />
 
             <EditText
-                android:id="@+id/kpKeterangan"
+                android:id="@+id/kNoTelepon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="#000000"
                 android:ems="10"
-                android:inputType="textMultiLine"
+                android:inputType="textPersonName"
                 android:textColor="#000000"
                 android:textColorHint="#473D3D"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                app:layout_constraintEnd_toEndOf="@+id/kpJumlahBayar"
-                app:layout_constraintStart_toStartOf="@+id/kpJumlahBayar"
-                app:layout_constraintTop_toTopOf="@+id/textView34" />
+                app:layout_constraintEnd_toEndOf="@+id/kAlamatPembeli"
+                app:layout_constraintStart_toStartOf="@+id/kAlamatPembeli"
+                app:layout_constraintTop_toBottomOf="@+id/kAlamatPembeli" />
 
+            <EditText
+                android:id="@+id/kNamaPembeli"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/kJumlahBayar"
+                app:layout_constraintStart_toStartOf="@+id/kJumlahBayar"
+                app:layout_constraintTop_toBottomOf="@+id/kJumlahBayar" />
+
+            <EditText
+                android:id="@+id/kAlamatPembeli"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/kJumlahBayar"
+                app:layout_constraintStart_toStartOf="@+id/kJumlahBayar"
+                app:layout_constraintTop_toBottomOf="@+id/kNamaPembeli" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <TextView
-        android:id="@+id/lNamaPengguna"
+        android:id="@+id/kProsesPembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0%"
+        android:textColor="#D8151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/kPembayaranSimpan"
+        app:layout_constraintStart_toEndOf="@+id/kPembayaranBersihkan"
+        app:layout_constraintTop_toTopOf="@+id/kPembayaranBersihkan" />
+
+    <TextView
+        android:id="@+id/lUserKeranjangEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -343,5 +302,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/lPengguna" />
+        app:layout_constraintTop_toBottomOf="@+id/lUserPembayaranEdit2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

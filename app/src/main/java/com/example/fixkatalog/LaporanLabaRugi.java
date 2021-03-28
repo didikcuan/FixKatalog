@@ -69,6 +69,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
     File myPath;
     Button btnPrintLR;
     ////
+    Integer pokok, bayar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
 
         }
         String tanggal = bulanTahunLR.getText().toString();
-        Query query = FirebaseDatabase.getInstance().getReference("barangkeluar")
+        Query query = FirebaseDatabase.getInstance().getReference("penjualan")
                 .orderByChild("bulantahun")
                 .startAt(tanggal).endAt(tanggal+"\uf8ff");
 
@@ -147,20 +148,17 @@ public class LaporanLabaRugi extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
 
                     Map<String,Object> map = (Map<String, Object>) ds.getValue();
-                    Object hargabarang =  map.get("hargabarang");
-                    Object jumlah = map.get("jumlahbarang");
-                    Object hargabarangmasuk =  map.get("hargabarangmasuk");
+                    Object jumlahbayar =  map.get("jumlahbayar");
+                    Object jumlahpokok = map.get("jumlahpokok");
 
-                    int hValue = Integer.parseInt(String.valueOf(hargabarangmasuk));
-                    int pValue = Integer.parseInt(String.valueOf(hargabarang));
-                    int jValue = Integer.parseInt(String.valueOf(jumlah));
-                    int sumi = pValue * jValue ;
-                    int humi = hValue * jValue ;
+
+                    int jumlahbayar1 = Integer.parseInt(String.valueOf(jumlahbayar));
+                    int jumlahpokok1 = Integer.parseInt(String.valueOf(jumlahpokok));
 
                     ////
-                    sum1 += humi;
+                    sum1 += jumlahpokok1;
                     Log.d("Sum1",String.valueOf(sum1));
-
+                    pokok = sum1;
                     String setView ;
                     String replace1 = String.valueOf(sum1).replaceAll("[.]","");
                     if (!replace1.isEmpty())
@@ -175,9 +173,9 @@ public class LaporanLabaRugi extends AppCompatActivity {
                     }
                     ////
 
-                    sum += sumi;
+                    sum += jumlahbayar1;
                     Log.d("Sum",String.valueOf(sum));
-
+                    bayar = sum;
                     String setTextView ;
                     String replace = String.valueOf(sum).replaceAll("[.]","");
                     if (!replace.isEmpty())
@@ -314,7 +312,7 @@ public class LaporanLabaRugi extends AppCompatActivity {
                                 int total = Integer.valueOf(biayalainnya) + Integer.valueOf(biayastiker) +
                                         Integer.valueOf(biayatoko) + Integer.valueOf(biayawifi) + Integer.valueOf(biayalistrik);
                                 //////////////////////////////////////
-                                int bersih = sumi - humi - total ;
+                                int bersih = bayar - pokok - total ;
 
                                 String setTextView6 ;
                                 String replace6 = String.valueOf(bersih).replaceAll("[Rp .]","Rp .");

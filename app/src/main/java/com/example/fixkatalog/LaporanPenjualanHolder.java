@@ -9,18 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LaporanPenjualanHolder extends RecyclerView.ViewHolder {
 
-    TextView kodeBK,namaBK,namaP,tanggalBK,hargaBK,qtyBK,totalBK ;
+    TextView kodePenjualan,noNota,namaPembeli,tanggalPenjualan,jumlahBayarPenjualan;
     View v;
 
     public LaporanPenjualanHolder(@NonNull View itemView) {
         super(itemView);
-        kodeBK=itemView.findViewById(R.id.kodeBK);
-        namaBK=itemView.findViewById(R.id.namaBK);
-        namaP=itemView.findViewById(R.id.namaP);
-        tanggalBK=itemView.findViewById(R.id.tanggalBK);
-        hargaBK=itemView.findViewById(R.id.hargaBK);
-        qtyBK=itemView.findViewById(R.id.qtyBK);
-        totalBK=itemView.findViewById(R.id.totalBK);
+        kodePenjualan=itemView.findViewById(R.id.kodePenjualan);
+        noNota=itemView.findViewById(R.id.noNota);
+        namaPembeli=itemView.findViewById(R.id.namaPembeli);
+        tanggalPenjualan=itemView.findViewById(R.id.tanggalPenjualan);
+        jumlahBayarPenjualan=itemView.findViewById(R.id.jumlahBayarPenjualan);
+
         v=itemView;
     }
 }

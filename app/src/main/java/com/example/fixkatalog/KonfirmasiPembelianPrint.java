@@ -21,7 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,20 +45,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
-public class LapPembelianDitolak extends AppCompatActivity {
+public class KonfirmasiPembelianPrint extends AppCompatActivity {
 
-
-    TextView bulanTahunPD,totalOmsetPD;
-
-    RecyclerView recyclerLapPD;
-    FirebaseRecyclerOptions<LaporanPenjualanClass> options;
-    FirebaseRecyclerAdapter<LaporanPenjualanClass,LaporanPenjualanHolder> adapter;
-    DatabaseReference Dataref;
+    ImageView kPPrint2, kPKembali2;
+    RecyclerView kpRecycler2;
+    FirebaseRecyclerOptions<KeranjangClass> options;
+    FirebaseRecyclerAdapter<KeranjangClass,KeranjangHolder> adapter;
+    String key, user, uid, intent1;
+    TextView lTotalBayar2,lNamaPembeli2,lAlamatPembeli2,lNoTelepon2,lNoPesan2,lTanggal2,lPukul2;
 
     ////
     Display mDisplay;
@@ -69,18 +67,76 @@ public class LapPembelianDitolak extends AppCompatActivity {
     int totalWidth;
 
     public static final int READ_PHONE = 110;
-    String file_name = "Screenshot";
+    String file_name = "Nota";
     File myPath;
-    Button btnPrintPD;
     ////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lap_pembelian_ditolak);
+        setContentView(R.layout.konfirmasi_pembelian_print);
 
-        /////
-        btnPrintPD = findViewById(R.id.btnPrintPD);
+        lNamaPembeli2 = findViewById(R.id.lNamaPembeli2);
+        lAlamatPembeli2 = findViewById(R.id.lAlamatPembeli2);
+        lNoTelepon2 = findViewById(R.id.lNoTelepon2);
+        lNoPesan2 = findViewById(R.id.lNoPesan2);
+        lTanggal2 = findViewById(R.id.lTanggal2);
+        lPukul2 = findViewById(R.id.lPukul2);
+
+        kPPrint2 = findViewById(R.id.kPPrint2);
+        kPKembali2 = findViewById(R.id.kPKembali2);
+        kpRecycler2 = findViewById(R.id.kpRecycler2);
+        lTotalBayar2 = findViewById(R.id.lTotalBayar2);
+
+        kpRecycler2.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        kpRecycler2.setHasFixedSize(true);
+
+        if(getIntent().getExtras()!=null){
+
+            Bundle bundle = getIntent().getExtras();
+            user = bundle.getString("lnama");
+            uid = bundle.getString("uid");
+            key = bundle.getString("key_temp");
+            if (bundle.getString("intent1") !=null)
+            {
+                intent1 = bundle.getString("intent1");
+            }
+
+        }
+
+        load();
+        total();
+
+        DatabaseReference tampil= FirebaseDatabase.getInstance().getReference().child("tampilkeranjang");
+        tampil.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String tanggal=snapshot.child("tanggal").getValue().toString();
+                String waktu=snapshot.child("waktu").getValue().toString();
+
+                lTanggal2.setText(tanggal);
+                lPukul2.setText(waktu);
+
+                String nama2=snapshot.child("namapembeli").getValue().toString();
+                String alamat2=snapshot.child("alamatpembeli").getValue().toString();
+                String notelepon2=snapshot.child("notelepon").getValue().toString();
+
+                lNamaPembeli2.setText("Nama Pembeli : "+nama2);
+                lAlamatPembeli2.setText("Alamat Pembeli : "+alamat2);
+                lNoTelepon2.setText("No. Telepon Pembeli : "+notelepon2);
+                lNoPesan2.setText("No. Pesananan : " + key);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+/////
 
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         mDisplay = wm.getDefaultDisplay();
@@ -96,111 +152,108 @@ public class LapPembelianDitolak extends AppCompatActivity {
             }
         }
 
-        btnPrintPD.setOnClickListener(new View.OnClickListener() {
+        kPPrint2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnPrintPD.setVisibility(View.GONE);
+                kPPrint2.setVisibility(View.GONE);
+                kPKembali2.setVisibility(View.GONE);
 
                 takeScreenShot();
 
-                btnPrintPD.setVisibility(View.VISIBLE);
+                kPPrint2.setVisibility(View.VISIBLE);
+                kPKembali2.setVisibility(View.VISIBLE);
             }
         });
+        ////
 
+        if (intent1 != null)
+        {
 
-        Dataref= FirebaseDatabase.getInstance().getReference().child("tolak");
-        bulanTahunPD=findViewById(R.id.bulanTahunPD);
-        totalOmsetPD=findViewById(R.id.totalOmsetPD);
-        recyclerLapPD=findViewById(R.id.recyclerLapPD);
-
-        recyclerLapPD.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        if(getIntent().getExtras()!=null) {
-
-            Bundle bundle = getIntent().getExtras();
-            String tanggal = (bundle.getString("bulanTahun"));
-
-            LoadData(tanggal);
-            bulanTahunPD.setText(tanggal);
-
-            Query query = FirebaseDatabase.getInstance().getReference("tolak")
-                    .orderByChild("bulantahun")
-                    .startAt(tanggal).endAt(tanggal + "\uf8ff");
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()){
-
-                    }else
-                    {
-                        Bundle bundle = getIntent().getExtras();
-                        String nama = (bundle.getString("lnama"));
-
-                        Toast.makeText(LapPembelianDitolak.this, " Data Tidak Ada, Benarkan Bulan dan Tahun Cetak " , Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LapPembelianDitolak.this, MenuAdmin.class);
-                        intent.putExtra("lnama", nama);
-                        startActivity(intent);
-                    }
-                    int sum = 0;
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-                        Map<String, Object> map = (Map<String, Object>) ds.getValue();
-                        Object jumlah = map.get("jumlahbayar");
-
-                        int jValue = Integer.parseInt(String.valueOf(jumlah));
-
-                        sum += jValue;
-                        Log.d("Sum",String.valueOf(sum));
-
-                        String setTextView;
-                        String replace = String.valueOf(sum).replaceAll("[.]", "");
-                        if (!replace.isEmpty()) {
-                            setTextView = formatRupiah(Double.parseDouble(replace));
-
-
-                        } else {
-
-                            setTextView = "No data";
-                        }
-
-                        totalOmsetPD.setText(setTextView);
-
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+        }else
+        {
+            Intent intent = new Intent(KonfirmasiPembelianPrint.this, KeranjangCek.class);
+            intent.putExtra("lnama", user);
+            intent.putExtra("uid", uid);
+            intent.putExtra("key_temp", key);
+            intent1 = "2";
+            intent.putExtra("intent1", intent1);
+            startActivity(intent);
         }
-
-
-
-
-
-
 
 
     }
 
-    private void LoadData(String tanggal) {
-        Query query = FirebaseDatabase.getInstance().getReference("tolak")
-                .orderByChild("bulantahun")
-                .startAt(tanggal).endAt(tanggal + "\uf8ff");
-
-
-        options=new FirebaseRecyclerOptions.Builder<LaporanPenjualanClass>().setQuery(query,LaporanPenjualanClass.class).build();
-        adapter=new FirebaseRecyclerAdapter<LaporanPenjualanClass, LaporanPenjualanHolder> (options) {
+    private void total(){
+        ///
+        Query query = FirebaseDatabase.getInstance().getReference("konfirmasipembayaran")
+                .orderByChild("kodekeranjang").equalTo(uid+"1"+key);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull LaporanPenjualanHolder holder, final int position, @NonNull LaporanPenjualanClass model) {
-                holder.kodePenjualan.setText(model.getKodepenjualan());
-                holder.noNota.setText(model.getNonota());
-                holder.namaPembeli.setText(model.getNamapembeli());
-                holder.tanggalPenjualan.setText(model.getTanggalkeluar());
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                TextView totalBayar = findViewById(R.id.totalBayar);
+                if (dataSnapshot.exists())
+                {
+                    int sum = 0;
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+                        Map<String,Object> map = (Map<String, Object>) ds.getValue();
+                        Object hargabarang =  map.get("hargabarang");
+                        Object jumlah = map.get("jumlahbarang");
+
+                        int pValue = Integer.parseInt(String.valueOf(hargabarang));
+                        int jValue = Integer.parseInt(String.valueOf(jumlah));
+                        int sumi = pValue * jValue ;
+                        sum += sumi;
+                        Log.d("Sum",String.valueOf(sum));
+                        String jumlah1 = String.valueOf(sum);
+
+                        String setTextView ;
+                        String replace = String.valueOf(sum).replaceAll("[.]","");
+                        if (!replace.isEmpty())
+                        {
+                            setTextView = formatRupiah(Double.parseDouble(replace));
+
+
+                        }else
+                        {
+
+                            setTextView = "No data";
+                        }
+
+                        lTotalBayar2.setText(setTextView);
+
+                    }
+                }else{
+                    lTotalBayar2.setText("Rp. 0");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ///////
+    }
+
+    private void load() {
+        DatabaseReference Dataref= FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
+
+        Query query= Dataref.orderByChild("kodekeranjang").equalTo(uid+"1"+key);
+
+        options=new FirebaseRecyclerOptions.Builder<KeranjangClass>().setQuery(query,KeranjangClass.class).build();
+        adapter=new FirebaseRecyclerAdapter<KeranjangClass, KeranjangHolder> (options) {
+            @Override
+            protected void onBindViewHolder(@NonNull KeranjangHolder holder, final int position, @NonNull KeranjangClass model) {
+                holder.kNama.setText(model.getNamabarang());
+                holder.kUkuran.setText(model.getUkuranbarang());
+                holder.kJumlah.setText(model.getJumlahbarang());
 
                 ///
                 String setTextView ;
-                String replace = model.getJumlahbayar().replaceAll("[.]","");
+                String replace = model.getHargabarang().replaceAll("[Rp. ]","");
                 if (!replace.isEmpty())
                 {
                     setTextView = formatRupiah(Double.parseDouble(replace));
@@ -212,38 +265,54 @@ public class LapPembelianDitolak extends AppCompatActivity {
                     setTextView = "No data";
                 }
 
-                holder.jumlahBayarPenjualan.setText(setTextView);
+                ///
 
+                holder.kHarga.setText(setTextView);
 
-                holder.v.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-
-
-                    }
-                });
-
+                holder.kDelete.setVisibility(View.GONE);
             }
 
             @NonNull
             @Override
-            public LaporanPenjualanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public KeranjangHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.lap_penjualan_list,parent,false);
-                return new LaporanPenjualanHolder(v);
+                View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.keranjang_list,parent,false);
+                return new KeranjangHolder(v);
             }
         };
         adapter.startListening();
-        recyclerLapPD.setAdapter(adapter);
+        kpRecycler2.setAdapter(adapter);
 
     }
 
+
     public void kembali(View view){
-        Intent intent=new Intent(LapPembelianDitolak.this,MenuAdmin.class);
-        //String nama = lAdminDataBarangMasuk.getText().toString();
-       // intent.putExtra("lnama", nama);
-        startActivity(intent);
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String uid = fAuth.getCurrentUser().getUid();
+        DatabaseReference Ref = FirebaseDatabase.getInstance().getReference().child("user");
+        Ref.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (Integer.valueOf(snapshot.child("tanggal").getValue().toString()) == 1){
+                    Intent intent=new Intent(KonfirmasiPembelianPrint.this,MenuAdmin.class);
+                    intent.putExtra("lnama", user);
+                    startActivity(intent);
+                }else {
+                    Intent intent=new Intent(KonfirmasiPembelianPrint.this,MainActivity.class);
+                    intent.putExtra("lnama", user);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 
     private  String formatRupiah(Double number){
@@ -254,6 +323,7 @@ public class LapPembelianDitolak extends AppCompatActivity {
         int length = split[0].length();
         return split[0].substring(0,2)+". "+split[0].substring(2,length);
     }
+
     ///////////////////////
     public Bitmap getBitmapFromView(View view, int totalHeight, int totalWidth){
 

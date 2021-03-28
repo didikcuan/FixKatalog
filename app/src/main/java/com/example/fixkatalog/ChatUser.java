@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,18 +54,91 @@ public class ChatUser extends AppCompatActivity {
 
             Bundle bundle = getIntent().getExtras();
             lChatUser.setText(bundle.getString("lnama"));
-            user = lChatUser.getText().toString();
-            room = user;
+
         }else{
 
             lChatUser.setText("Nama Tidak Tersedia");
 
         }
 
-        root1.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference user= FirebaseDatabase.getInstance().getReference().child("user");
+        user.child(fAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    String room = dataSnapshot.child("nama").getValue().toString();
+                    String uid = dataSnapshot.child("uid").getValue().toString();
+                    root1.child(room).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    setTitle("Room - "+room);
+                    root = FirebaseDatabase.getInstance().getReference().child("chat").child(uid);
+
+                    sendChatUser.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Map<String,Object> map = new HashMap<String, Object>();
+                            temp_key = root.push().getKey();
+                            root.updateChildren(map);
+
+                            DatabaseReference message_root = root.child(temp_key);
+                            Map<String,Object> map2 = new HashMap<String, Object>();
+                            map2.put("nama", room);
+                            map2.put("pesan",kolomChatUser.getText().toString());
+
+                            message_root.updateChildren(map2);
+
+                            kolomChatUser.setText(new String(""));
+
+                        }
+                    });
+
+                    root.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                            append_chat_conversatin(dataSnapshot);
+
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                            append_chat_conversatin(dataSnapshot);
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                }
             }
 
             @Override
@@ -73,57 +148,7 @@ public class ChatUser extends AppCompatActivity {
         });
 
 
-        setTitle("Room - "+room);
-        root = FirebaseDatabase.getInstance().getReference().child("chat").child(room);
 
-        sendChatUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Map<String,Object> map = new HashMap<String, Object>();
-                temp_key = root.push().getKey();
-                root.updateChildren(map);
-
-                DatabaseReference message_root = root.child(temp_key);
-                Map<String,Object> map2 = new HashMap<String, Object>();
-                map2.put("nama", user);
-                map2.put("pesan",kolomChatUser.getText().toString());
-
-                message_root.updateChildren(map2);
-
-                kolomChatUser.setText(new String(""));
-
-            }
-        });
-
-        root.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                append_chat_conversatin(dataSnapshot);
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                append_chat_conversatin(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
 

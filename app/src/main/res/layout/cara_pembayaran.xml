@@ -12,10 +12,10 @@
         android:id="@+id/fotoEdit"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNotifikasi"
+        app:layout_constraintTop_toBottomOf="@+id/editCaraPembayaran"
         app:srcCompat="@drawable/sent" />
 
     <ImageView
@@ -103,6 +103,7 @@
         android:inputType="textMultiLine"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCaraPembayaran" />

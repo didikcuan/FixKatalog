@@ -51,6 +51,12 @@ public class PengeluaranLainnya extends AppCompatActivity {
         fotoSimpanPengeluaran=findViewById(R.id.fotoSimpanPengeluaran);
         fotoBersihkanPengeluaran=findViewById(R.id.fotoBersihkanPengeluaran);
 
+        Date tanggal1 = new Date();
+        SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
+        String finalTanggal1 = format1.format(tanggal1);
+        EditText bulanTambah = findViewById(R.id.bulanTambah);
+        bulanTambah.setText(finalTanggal1);
+
         Dataref= FirebaseDatabase.getInstance().getReference().child("pengeluaran");
 
         Refkodepengeluaran= FirebaseDatabase.getInstance().getReference().child("kodepengeluaran");
@@ -348,11 +354,8 @@ public class PengeluaranLainnya extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
 
-                                        Date tanggal = new Date();
                                         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
-                                        SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
-                                        String finalTanggal = format.format(tanggal);
-                                        String finalTanggal1 = format1.format(tanggal);
+                                        String finalTanggal = format.format(tanggal1);
 
                                         String totalbiaya = String.valueOf(Integer.valueOf(biayalistrik)+Integer.valueOf(biayastiker)
                                                 +Integer.valueOf(biayatoko)+Integer.valueOf(biayawifi)+Integer.valueOf(biayalainnya));
@@ -364,7 +367,7 @@ public class PengeluaranLainnya extends AppCompatActivity {
                                         dataSnapshot2.getRef().child("biayawifi").setValue(biayawifi);
                                         dataSnapshot2.getRef().child("biayalainnya").setValue(biayalainnya);
                                         dataSnapshot2.getRef().child("tanggal").setValue(finalTanggal);
-                                        dataSnapshot2.getRef().child("bulantahun").setValue(finalTanggal1);
+                                        dataSnapshot2.getRef().child("bulantahun").setValue(bulanTambah.getText().toString());
                                         dataSnapshot2.getRef().child("uid").setValue(uid);
                                         dataSnapshot2.getRef().child("totalbiaya").setValue(totalbiaya);
                                         dataSnapshot2.getRef().child("namaadmin").setValue(nama);

@@ -58,6 +58,8 @@ public class UbahDataProfilUser extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         userId = fAuth.getCurrentUser().getUid();
 
+        ImageView keranjang = findViewById(R.id.keranjang);
+        keranjang.setEnabled(false);
         Dataref= FirebaseDatabase.getInstance().getReference().child("user");
         refStorage= FirebaseStorage.getInstance().getReference().child("user");
         ref=FirebaseDatabase.getInstance().getReference().child("user").child(userId);
@@ -157,6 +159,48 @@ public class UbahDataProfilUser extends AppCompatActivity {
 
 
                             ////
+                            DatabaseReference Refbarangdipesan = FirebaseDatabase.getInstance().getReference().child("barangdipesanstokhabis");
+                            Refbarangdipesan.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                                        postSnapshot.getRef().child("uid").setValue(uid);
+                                        postSnapshot.getRef().child("namapembeli").setValue(nama);
+
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+                            DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("barangkeluar");
+                            Refbarangkeluar.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                                        postSnapshot.getRef().child("uid").setValue(uid);
+                                        postSnapshot.getRef().child("alamatpembeli").setValue(alamat);
+                                        postSnapshot.getRef().child("teleponpembeli").setValue(telepon);
+                                        postSnapshot.getRef().child("namapembeli").setValue(nama);
+                                        postSnapshot.getRef().child("tanggallahir").setValue(tanggal);;
+
+                                        if (isImageAdded != true) {
+                                            postSnapshot.getRef().child("ImageUrlPembeli").setValue(ImageUrl);
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
                             DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
                             Refkonfirmasi.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -180,33 +224,6 @@ public class UbahDataProfilUser extends AppCompatActivity {
 
                                 }
                             });
-                            ////
-
-                            DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("barangkeluar");
-                            Refbarangkeluar.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        postSnapshot.getRef().child("uid").setValue(uid);
-                                        postSnapshot.getRef().child("alamatpembeli").setValue(alamat);
-                                        postSnapshot.getRef().child("teleponpembeli").setValue(telepon);
-                                        postSnapshot.getRef().child("namapembeli").setValue(nama);
-                                        postSnapshot.getRef().child("tanggallahir").setValue(tanggal);
-
-                                        if (isImageAdded != true) {
-                                            postSnapshot.getRef().child("ImageUrlPembeli").setValue(ImageUrl);
-                                        }
-
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-
-                            ///
 
 
                             Dataref.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -250,6 +267,7 @@ public class UbahDataProfilUser extends AppCompatActivity {
 
                                                             }
                                                         });
+
 ///////
                                                         DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
                                                         Refkonfirmasi.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {

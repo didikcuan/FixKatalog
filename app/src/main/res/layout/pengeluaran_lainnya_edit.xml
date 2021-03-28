@@ -130,7 +130,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/fotoBersihkanPengeluaranEdit"
-        app:layout_constraintTop_toBottomOf="@+id/logo3">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo3"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -261,6 +264,18 @@
                 app:layout_constraintStart_toStartOf="@+id/textBiayaWifiEdit"
                 app:layout_constraintTop_toBottomOf="@+id/textBiayaWifiEdit" />
 
+            <TextView
+                android:id="@+id/bLa2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Periode Bulan"
+                android:textColor="#D8151515"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/bulanEdit"
+                app:layout_constraintStart_toStartOf="@+id/textView51"
+                app:layout_constraintTop_toTopOf="@+id/bulanEdit" />
+
             <EditText
                 android:id="@+id/textBiayaListrikEdit"
                 android:layout_width="190dp"
@@ -345,6 +360,23 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bLa1" />
+
+            <EditText
+                android:id="@+id/bulanEdit"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#000000"
+                android:ems="10"
+                android:hint="Contoh 01 2021"
+                android:inputType="textPersonName"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="#473D3D"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textBiayaLainnyaEdit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

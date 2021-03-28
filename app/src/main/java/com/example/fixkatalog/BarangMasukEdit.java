@@ -210,24 +210,7 @@ public class BarangMasukEdit extends AppCompatActivity {
                         String jumlahbarang1 = dataSnapshot.child("jumlahbarang").getValue().toString();
 
                         DatabaseReference refTampil = FirebaseDatabase.getInstance().getReference().child("tampil");
-                        refTampil.child("1"+kodebarang+ukuranbarang).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                Integer c = Integer.valueOf(jumlahbarang1);
-                                Integer a = Integer.valueOf(dataSnapshot.child("jumlahbarang").getValue().toString());
-
-                                String hasil1 = String.valueOf(a-c);
-
-
-                                dataSnapshot.getRef().child("jumlahbarang").setValue(hasil1);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
+                        refTampil.child("1"+kodebarang+ukuranbarang).removeValue();
 
                     }
 
@@ -391,6 +374,7 @@ public class BarangMasukEdit extends AppCompatActivity {
                             String namasupplier = dataSnapshot.child("namasupplier").getValue().toString();
 
                             meNamaSupplier.setText(namasupplier);
+
 
                         }else
                         {

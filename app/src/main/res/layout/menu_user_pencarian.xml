@@ -121,8 +121,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewPencarian"
-        app:layout_constraintEnd_toStartOf="@+id/namaUser10"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/namaUser1"
+        app:layout_constraintStart_toEndOf="@+id/keranjangPencarian"
         app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <EditText
@@ -148,7 +148,7 @@
         android:id="@+id/kembaliPencarian"
         android:layout_width="47dp"
         android:layout_height="44dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:onClick="kembali"
         app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +164,16 @@
         app:layout_constraintTop_toTopOf="@+id/loginPencarian"
         app:srcCompat="@drawable/profil" />
 
+    <ImageView
+        android:id="@+id/keranjangPencarian"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:onClick="keranjang"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loginPencarian"
+        app:srcCompat="@drawable/tambahkan" />
+
     <ProgressBar
         android:id="@+id/barPencarian"
         style="?android:attr/progressBarStyle"
@@ -178,7 +188,7 @@
         android:id="@+id/recyclerViewPencarian"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toTopOf="@+id/chatPencarian"
         app:layout_constraintTop_toBottomOf="@+id/Logo"
         tools:layout_editor_absoluteX="93dp" />

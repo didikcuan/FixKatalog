@@ -278,7 +278,7 @@ public class DataSupplierEdit extends AppCompatActivity {
 
                     if (isImageAdded != true) {
 
-                        postSnapshot.getRef().child("ImageUrl").setValue(ImageUrl);
+                        postSnapshot.getRef().child("ImageUrlSupplier").setValue(ImageUrl);
 
                     }
 
@@ -303,7 +303,7 @@ public class DataSupplierEdit extends AppCompatActivity {
 
                     if (isImageAdded != true) {
 
-                        postSnapshot.getRef().child("ImageUrl").setValue(ImageUrl);
+                        postSnapshot.getRef().child("ImageUrlSupplier").setValue(ImageUrl);
 
                     }
 

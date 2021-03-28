@@ -9,28 +9,47 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textNamaProduk"
+        android:id="@+id/textNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="no"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textNo2"
+        app:layout_constraintTop_toTopOf="@+id/fotoPembelianBarang" />
+
+    <TextView
+        android:id="@+id/textNo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif"
-        android:text="Nama Barang"
+        android:text="No Pesanan : "
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
         app:layout_constraintTop_toTopOf="@+id/fotoPembelianBarang" />
 
     <TextView
-        android:id="@+id/textQTY"
+        android:id="@+id/textStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="total barang"
+        android:text="konfirmasi"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textKode2"
-        app:layout_constraintTop_toBottomOf="@+id/textNamaProduk" />
+        app:layout_constraintTop_toTopOf="@+id/textKode2" />
+
+    <TextView
+        android:id="@+id/textJumlahHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harga"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textHarga11"
+        app:layout_constraintTop_toTopOf="@+id/textHarga11" />
 
     <TextView
         android:id="@+id/textKode2"
@@ -38,11 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="Total Barang : "
+        android:text="Status : "
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
-        app:layout_constraintTop_toBottomOf="@+id/textNamaProduk" />
+        app:layout_constraintTop_toBottomOf="@+id/textNo" />
 
     <TextView
         android:id="@+id/textPembeli"
@@ -53,7 +72,7 @@
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textHarga2"
-        app:layout_constraintTop_toBottomOf="@+id/textQTY" />
+        app:layout_constraintTop_toBottomOf="@+id/textStatus" />
 
     <TextView
         android:id="@+id/textHarga2"
@@ -65,15 +84,27 @@
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
-        app:layout_constraintTop_toBottomOf="@+id/textQTY" />
+        app:layout_constraintTop_toBottomOf="@+id/textStatus" />
+
+    <TextView
+        android:id="@+id/textHarga11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Total Harga : "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoPembelianBarang"
+        app:layout_constraintTop_toBottomOf="@+id/textHarga2" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotoPembelianBarang"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="105dp"
+        android:layout_height="104dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/bersihkan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

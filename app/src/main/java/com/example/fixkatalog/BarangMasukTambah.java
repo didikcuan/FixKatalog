@@ -312,7 +312,7 @@ public class BarangMasukTambah extends AppCompatActivity {
 
                             mtNamaSupplier.setText(namasupplier);
 
-                            mtKodeBarangMasuk.setEnabled(true);
+                            mtKodeBarangMasuk.setEnabled(false);
                             mtTanggalMasuk.setEnabled(false);
                             mtUkuran.setEnabled(true);
                             mtJumlah.setEnabled(true);

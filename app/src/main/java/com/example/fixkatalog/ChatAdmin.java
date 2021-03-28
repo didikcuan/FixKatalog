@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,26 +91,50 @@ public class ChatAdmin extends AppCompatActivity {
 
             }
         });
-        root.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Set<String> set = new HashSet<String>();
-                Iterator i = dataSnapshot.getChildren().iterator();
-                while ( i.hasNext())
-                {
-                    set.add(((DataSnapshot)i.next()).getKey());
-                }
-                list_of_rooms.clear();
-                list_of_rooms.addAll(set);
 
-                arrayAdapter.notifyDataSetChanged();
+        /////
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference user= FirebaseDatabase.getInstance().getReference().child("user");
+        user.child(fAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    String room = dataSnapshot.child("nama").getValue().toString();
+                    String uid = dataSnapshot.child("uid").getValue().toString();
+
+                    root.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Set<String> set = new HashSet<String>();
+                            Iterator i = dataSnapshot.getChildren().iterator();
+                            while ( i.hasNext())
+                            {
+                                set.add(((DataSnapshot)i.next()).getKey());
+                            }
+                            list_of_rooms.clear();
+                            list_of_rooms.addAll(set);
+
+                            arrayAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        /////
+
 
         listRoom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

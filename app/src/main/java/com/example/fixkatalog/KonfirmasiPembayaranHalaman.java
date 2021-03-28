@@ -45,7 +45,8 @@ public class KonfirmasiPembayaranHalaman extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.konfirmasi_pembayaran_halaman);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
 
         recyclerViewPembayaran=findViewById(R.id.recyclerViewPembayaran);

@@ -18,43 +18,175 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textKode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="3dp"
-                android:text="Kode Barang Keluar"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <TextView
-                android:id="@+id/textNamaBarangPembayaran16"
+                android:id="@+id/textNamaBarangPembayaran4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="24dp"
                 android:fontFamily="sans-serif"
                 android:text="|"
                 android:textColor="#000000"
                 android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textHarga7"
-                app:layout_constraintTop_toTopOf="@+id/textHarga7" />
+                app:layout_constraintBottom_toBottomOf="@+id/kodePenjualan"
+                app:layout_constraintStart_toEndOf="@+id/aaa" />
+
+    <TextView
+        android:id="@+id/noNota"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="No. Nota"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toStartOf="@+id/textNamaBarangPembayaran5"
+        app:layout_constraintStart_toStartOf="@+id/bbb"
+        app:layout_constraintTop_toTopOf="@+id/kodePenjualan" />
 
             <TextView
-                android:id="@+id/textTotalBarang2"
+                android:id="@+id/textNamaBarangPembayaran5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="3dp"
-                android:text="Nama Barang"
+                android:layout_marginStart="24dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
                 android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran12"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@+id/noNota"
+                app:layout_constraintStart_toEndOf="@+id/bbb" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@+id/namaPembeli"
+                app:layout_constraintStart_toEndOf="@+id/textNamaPembeli" />
+
+            <TextView
+                android:id="@+id/textNamaBarangPembayaran7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="sans-serif"
+                android:text="|"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tanggalPenjualan"
+                app:layout_constraintStart_toEndOf="@+id/textHarga2" />
+
+            <TextView
+                android:id="@+id/kodePenjualan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Kode Penjualan"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toStartOf="@+id/textNamaBarangPembayaran4"
+                app:layout_constraintStart_toStartOf="@+id/aaa"
+                app:layout_constraintTop_toTopOf="@+id/aaa" />
+
+    <TextView
+        android:id="@+id/namaPembeli"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Nama Pembeli"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toStartOf="@+id/textNamaBarangPembayaran6"
+        app:layout_constraintStart_toStartOf="@+id/textNamaPembeli"
+        app:layout_constraintTop_toTopOf="@+id/noNota" />
+
+    <TextView
+        android:id="@+id/tanggalPenjualan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Tanggal"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toStartOf="@+id/textNamaBarangPembayaran7"
+        app:layout_constraintStart_toStartOf="@+id/textHarga2"
+        app:layout_constraintTop_toTopOf="@+id/namaPembeli" />
+
+    <TextView
+        android:id="@+id/jumlahBayarPenjualan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Jumlah Bayar"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textHarga4"
+        app:layout_constraintTop_toTopOf="@+id/tanggalPenjualan" />
+
+    <TextView
+        android:id="@+id/textHarga2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Tanggal"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran6"
+        app:layout_constraintTop_toTopOf="@+id/textNamaPembeli" />
+
+    <TextView
+        android:id="@+id/bbb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Nama Barang"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran4"
+        app:layout_constraintTop_toTopOf="@+id/aaa" />
+
+            <TextView
+                android:id="@+id/aaa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:text="Kode Penjualan"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/textHarga4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Harga"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran7"
+        app:layout_constraintTop_toTopOf="@+id/textNamaPembeli" />
+
+    <TextView
+        android:id="@+id/textNamaPembeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Nama Pembeli"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran5"
+        app:layout_constraintTop_toTopOf="@+id/bbb" />
 
             <View
                 android:id="@+id/divider3"
@@ -62,7 +194,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/textKode" />
+                app:layout_constraintTop_toBottomOf="@+id/textNamaBarangPembayaran4" />
 
             <TextView
                 android:id="@+id/acxz5"
@@ -90,19 +222,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/acxz5" />
 
             <TextView
-                android:id="@+id/textHarga6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="3dp"
-                android:text="Tanggal"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran14"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-            <TextView
                 android:id="@+id/acxz6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,79 +243,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/acxz4" />
 
-            <TextView
-                android:id="@+id/textNamaBarangPembayaran12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:fontFamily="sans-serif"
-                android:text="|"
-                android:textColor="#000000"
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textKode"
-                app:layout_constraintTop_toTopOf="@+id/textKode" />
-
-            <TextView
-                android:id="@+id/textNamaBarangPembayaran13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:fontFamily="sans-serif"
-                android:text="|"
-                android:textColor="#000000"
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textTotalBarang2"
-                app:layout_constraintTop_toTopOf="@+id/textTotalBarang2" />
-
-            <TextView
-                android:id="@+id/textHarga8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:text="QTY"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran16"
-                app:layout_constraintTop_toTopOf="@+id/textNamaBarangPembayaran16" />
-
-            <TextView
-                android:id="@+id/textNamaBarangPembayaran17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:fontFamily="sans-serif"
-                android:text="|"
-                android:textColor="#000000"
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textHarga8"
-                app:layout_constraintTop_toTopOf="@+id/textHarga8" />
-
-            <TextView
-                android:id="@+id/textNamaBarangPembayaran14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="sans-serif"
-                android:text="|"
-                android:textColor="#000000"
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textNamaPembeli2"
-                app:layout_constraintTop_toTopOf="@+id/textNamaBarangPembayaran13" />
-
-            <TextView
-                android:id="@+id/textHarga7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="3dp"
-                android:text="Harga"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran15"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
-
             <ImageView
                 android:id="@+id/logo2"
                 android:layout_width="48dp"
@@ -206,44 +252,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/cogan" />
-
-            <TextView
-                android:id="@+id/textNamaBarangPembayaran15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:fontFamily="sans-serif"
-                android:text="|"
-                android:textColor="#000000"
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/textHarga6"
-                app:layout_constraintTop_toTopOf="@+id/textNamaBarangPembayaran14" />
-
-            <TextView
-                android:id="@+id/textNamaPembeli2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="3dp"
-                android:text="Nama Pembeli"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran13"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-            <TextView
-                android:id="@+id/textHarga9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="3dp"
-                android:text="Total Omset"
-                android:textColor="#000000"
-                android:textSize="6sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toEndOf="@+id/textNamaBarangPembayaran17"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <TextView
                 android:id="@+id/acxz2"

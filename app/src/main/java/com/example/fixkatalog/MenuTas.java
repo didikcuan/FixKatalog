@@ -46,7 +46,8 @@ public class MenuTas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_tas);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("tampil");
 
         recyclerViewTas=findViewById(R.id.recyclerViewTas);
@@ -273,5 +274,18 @@ public class MenuTas extends AppCompatActivity {
         String[] split = formatrupiah.split(",");
         int length = split[0].length();
         return split[0].substring(0,2)+". "+split[0].substring(2,length);
+    }
+    public void keranjang(View view){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            Intent intent = new Intent(MenuTas.this, Keranjang.class);
+            String nama = namaUserTas.getText().toString();
+            intent.putExtra("lnama", nama);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText(MenuTas.this, " Harap Login Dulu ", Toast.LENGTH_SHORT).show();
+        }
     }
 }

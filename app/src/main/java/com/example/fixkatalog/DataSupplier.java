@@ -42,7 +42,8 @@ public class DataSupplier extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_supplier);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("supplier");
         searchSupplier=findViewById(R.id.searchSupplier);
         recyclerViewSupplier=findViewById(R.id.recyclerViewSupplier);

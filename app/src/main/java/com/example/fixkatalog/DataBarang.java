@@ -46,7 +46,8 @@ public class DataBarang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_barang);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("barang");
         searchBarang=findViewById(R.id.searchBarang);
         recyclerViewBarang=findViewById(R.id.recyclerViewBarang);

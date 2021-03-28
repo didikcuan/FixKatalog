@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class KonfirmasiPembelianHolder extends RecyclerView.ViewHolder {
     ImageView fotoPembelianBarang;
-    TextView textNamaProduk,textQTY,textPembeli ;
+    TextView textNo,textStatus,textPembeli,textJumlahHarga ;
     View v;
 
     public KonfirmasiPembelianHolder(@NonNull View itemView) {
         super(itemView);
-        textNamaProduk=itemView.findViewById(R.id.textNamaProduk);
-        textQTY=itemView.findViewById(R.id.textQTY);
+        textStatus=itemView.findViewById(R.id.textStatus);
+        textJumlahHarga=itemView.findViewById(R.id.textJumlahHarga);
         textPembeli=itemView.findViewById(R.id.textPembeli);
         fotoPembelianBarang=itemView.findViewById(R.id.fotoPembelianBarang);
+        textNo=itemView.findViewById(R.id.textNo);
         v=itemView;
     }
 }

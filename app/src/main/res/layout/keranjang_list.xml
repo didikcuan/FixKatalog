@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/abc5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:text="|"
+        android:textColor="#D8151515"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/abc6"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/abc7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Harga"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/abc5"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/kHarga"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:text="Harga"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/abc7"
+        app:layout_constraintTop_toTopOf="@+id/kNama" />
+
+    <TextView
+        android:id="@+id/abc9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Ukuran"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/abc8"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/kUkuran"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:text="Ukuran"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/abc9"
+        app:layout_constraintTop_toTopOf="@+id/kHarga" />
+
+    <TextView
+        android:id="@+id/abc11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Jumlah"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/abc10"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/kJumlah"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Jumlah"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/abc11"
+        app:layout_constraintTop_toTopOf="@+id/kUkuran" />
+
+    <TextView
+        android:id="@+id/abc8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:text="|"
+        android:textColor="#D8151515"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/abc7"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/abc10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:text="|"
+        android:textColor="#D8151515"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/abc9"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <TextView
+        android:id="@+id/abc6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Nama Barang"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kNama"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Nama Barang"
+        android:textColor="#D8151515"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/abc6" />
+
+    <ImageView
+        android:id="@+id/kDelete"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/kJumlah"
+        app:srcCompat="@drawable/bersihkan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

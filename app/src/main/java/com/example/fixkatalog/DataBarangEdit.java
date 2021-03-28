@@ -339,6 +339,27 @@ public class DataBarangEdit extends AppCompatActivity {
                     }
                 });
 
+                DatabaseReference Refbarangdipesan = FirebaseDatabase.getInstance().getReference().child("barangdipesanstokhabis");
+                Refbarangdipesan.orderByChild("kodebarang").equalTo(kodebarang).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            postSnapshot.getRef().child("kodebarang").setValue("Data Null");
+                            postSnapshot.getRef().child("namabarang").setValue("Data Null");
+                            postSnapshot.getRef().child("jenisbarang").setValue("Data Null");
+                            postSnapshot.getRef().child("hargabarang").setValue("Data Null");
+                            postSnapshot.getRef().child("deskripsi").setValue("Data Null");
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
                 ref.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -440,6 +461,31 @@ public class DataBarangEdit extends AppCompatActivity {
 
                     if (isImageAdded != true) {
                         postSnapshot.getRef().child("ImageUrlBarang").setValue(ImageUrl);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference Refbarangdipesan = FirebaseDatabase.getInstance().getReference().child("barangdipesanstokhabis");
+
+        Refbarangdipesan.orderByChild("kodebarang").equalTo(kodebarang).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    postSnapshot.getRef().child("kodebarang").setValue(kodebarang);
+                    postSnapshot.getRef().child("namabarang").setValue(namabarang);
+                    postSnapshot.getRef().child("jenisbarang").setValue(jenisbarang);
+                    postSnapshot.getRef().child("hargabarang").setValue(hargabarang);
+                    postSnapshot.getRef().child("deskripsi").setValue(deskripsi);
+
+                    if (isImageAdded != true) {
+                        postSnapshot.getRef().child("ImageUrl").setValue(ImageUrl);
                     }
 
                 }
@@ -554,6 +600,20 @@ public class DataBarangEdit extends AppCompatActivity {
                                         }
                                     });
 
+
+                                    DatabaseReference Refbarangdipesan = FirebaseDatabase.getInstance().getReference().child("barangdipesanstokhabis");
+                                    Refbarangdipesan.orderByChild("kodebarang").equalTo(kodebarang).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                                                postSnapshot.getRef().child("ImageUrl").setValue(uri.toString());
+                                            }
+                                        }
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
 
                                     DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
                                     Refkonfirmasi.orderByChild("kodebarang").equalTo(kodebarang).addListenerForSingleValueEvent(new ValueEventListener() {

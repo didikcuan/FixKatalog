@@ -158,45 +158,19 @@ public class UbahDataProfilAdmin extends AppCompatActivity {
                             }
 
                             persenUbahProfil.setVisibility(View.VISIBLE);
-                            ////
-                            DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
-                            Refkonfirmasi.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+                            DatabaseReference Refpengeluaran = FirebaseDatabase.getInstance().getReference().child("pengeluaran");
+                            Refpengeluaran.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                         postSnapshot.getRef().child("uid").setValue(uid);
-                                        postSnapshot.getRef().child("alamatpembeli").setValue(alamat);
-                                        postSnapshot.getRef().child("teleponpembeli").setValue(telepon);
-                                        postSnapshot.getRef().child("namapembeli").setValue(nama);
-                                        postSnapshot.getRef().child("tanggallahir").setValue(tanggal);
+                                        postSnapshot.getRef().child("namaadmin").setValue(namauser);
+
 
                                         if (isImageAdded != true) {
-                                            postSnapshot.getRef().child("ImageUrlPembeli").setValue(ImageUrl);
-                                        }
-
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-                               ///////
-
-                            DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("barangkeluar");
-                            Refbarangkeluar.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        postSnapshot.getRef().child("uid").setValue(uid);
-                                        postSnapshot.getRef().child("alamatpembeli").setValue(alamat);
-                                        postSnapshot.getRef().child("teleponpembeli").setValue(telepon);
-                                        postSnapshot.getRef().child("namapembeli").setValue(nama);
-                                        postSnapshot.getRef().child("tanggallahir").setValue(tanggal);
-
-                                        if (isImageAdded != true) {
-                                            postSnapshot.getRef().child("ImageUrlPembeli").setValue(ImageUrl);
+                                            postSnapshot.getRef().child("ImageUrl").setValue(ImageUrl);
                                         }
 
                                     }
@@ -239,26 +213,13 @@ public class UbahDataProfilAdmin extends AppCompatActivity {
                                                             dataSnapshot.getRef().child("ImageUrl").setValue(uri.toString());
 
 
-                                                            DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("barangkeluar");
-                                                            Refbarangkeluar.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                                                            DatabaseReference Refpengeluaran = FirebaseDatabase.getInstance().getReference().child("pengeluaran");
+                                                            Refpengeluaran.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                                                 @Override
                                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                                                        postSnapshot.getRef().child("ImageUrlPembeli").setValue(uri.toString());
-                                                                    }
-                                                                }
-                                                                @Override
-                                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                                }
-                                                            });
-
-                                                            DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
-                                                            Refkonfirmasi.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                                @Override
-                                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                                                        postSnapshot.getRef().child("ImageUrlPembeli").setValue(uri.toString());
+                                                                        postSnapshot.getRef().child("ImageUrl").setValue(uri.toString());
                                                                     }
                                                                 }
                                                                 @Override

@@ -46,7 +46,8 @@ public class DataStok extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_stok);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("tampil");
         lAdminTotal=findViewById(R.id.lAdminTotal);
         recyclerViewTotal=findViewById(R.id.recyclerViewTotal);

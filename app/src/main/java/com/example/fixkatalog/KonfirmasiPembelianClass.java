@@ -1,21 +1,29 @@
 package com.example.fixkatalog;
 
 public class KonfirmasiPembelianClass {
-    private String namabarang, jumlahbarang, namapembeli, ImageUrlBarang;
+    private String status, jumlahbayar, key, namapembeli, ImageUrlPembeli, kodekeranjang, uid;
 
-    public String getJumlahbarang() {
-        return jumlahbarang;
+    public String getStatus() {
+        return status;
     }
-    public String getNamabarang() {
-        return namabarang;
+    public String getJumlahbayar() {
+        return jumlahbayar;
+    }
+    public String getKey() {
+        return key;
     }
     public String getNamapembeli() {
         return namapembeli;
     }
-    public String getImageUrlBarang() {
-        return ImageUrlBarang;
+    public String getImageUrlPembeli() {
+        return ImageUrlPembeli;
     }
-
+    public String getKodekeranjang() {
+        return kodekeranjang;
+    }
+    public String getUid() {
+        return uid;
+    }
 }
 
 

@@ -13,7 +13,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,13 +25,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -51,74 +57,51 @@ import java.util.SimpleTimeZone;
 
 public class KonfirmasiPembelian extends AppCompatActivity {
 
-    ImageView fotoBuktiTF,fotoKonfirmasi,fotoUserPemesan,fotoTolak,fotoPrint;
-    EditText textNoResi;
-    TextView lKonfirmasiPembelian,statusKonfirmasi,textBayar,textBarang,textUkuranBarang,textTotalQTY,textNamaPemesan,textAlamatPemesan,textNoteleponPemesan;
-
-    DatabaseReference Dataref, ref, Refuser, Refbarangkeluar, Refkodekeluar;
-
+    ImageView kpPembayaran,kpPrint,kpTolak,kpSimpan;
+    TextView kpStatus,kpCaraPembayaran,kpJumlahBayar,kpNama,kpAlamat,kpNoTelepon,lNamaPengguna;
+    EditText kpKeterangan;
+    FirebaseRecyclerOptions<KeranjangClass> options;
+    FirebaseRecyclerAdapter<KeranjangClass,KeranjangHolder> adapter;
+    String key,uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.konfirmasi_pembelian);
 
+        kpPembayaran = findViewById(R.id.kpPembayaran);
+        kpPrint = findViewById(R.id.kpPrint);
+        kpTolak = findViewById(R.id.kpTolak);
+        kpSimpan = findViewById(R.id.kpSimpan);
 
-        fotoBuktiTF=findViewById(R.id.fotoBuktiTF);
-        fotoKonfirmasi=findViewById(R.id.fotoKonfirmasi);
-        fotoUserPemesan=findViewById(R.id.fotoUserPemesan);
-        fotoPrint=findViewById(R.id.fotoPrint);
+        kpStatus = findViewById(R.id.kpStatus);
+        kpCaraPembayaran = findViewById(R.id.kpCaraPembayaran);
+        kpJumlahBayar = findViewById(R.id.kpJumlahBayar);
+        kpNama = findViewById(R.id.kpNama);
+        kpAlamat = findViewById(R.id.kpAlamat);
+        kpNoTelepon = findViewById(R.id.kpNoTelepon);
+        lNamaPengguna = findViewById(R.id.lNamaPengguna);
 
-        textNoResi=findViewById(R.id.textNoResi);
+        kpKeterangan = findViewById(R.id.kpKeterangan);
+        key =getIntent().getStringExtra("key_temp");
 
-        lKonfirmasiPembelian=findViewById(R.id.lKonfirmasiPembelian);
-        statusKonfirmasi=findViewById(R.id.statusKonfirmasi);
-        textBayar=findViewById(R.id.textBayar);
-        textBarang=findViewById(R.id.textBarang);
-        textUkuranBarang=findViewById(R.id.textUkuranBarang);
-        textTotalQTY=findViewById(R.id.textTotalQTY);
-        textNamaPemesan=findViewById(R.id.textNamaPemesan);
-        textAlamatPemesan=findViewById(R.id.textAlamatPemesan);
-        textNoteleponPemesan=findViewById(R.id.textNoteleponPemesan);
-        fotoTolak=findViewById(R.id.fotoTolak);
-
-
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-
-
-        String key=getIntent().getStringExtra("uid");
-
-        Dataref= FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
-
-        ref= FirebaseDatabase.getInstance().getReference().child("tampil");
-
-        Refuser= FirebaseDatabase.getInstance().getReference().child("user");
-
-        Refbarangkeluar= FirebaseDatabase.getInstance().getReference().child("barangkeluar");
-
-        Refkodekeluar= FirebaseDatabase.getInstance().getReference().child("kodekeluar");
-
+        kpPembayaran.setVisibility(View.VISIBLE);
 
         if(getIntent().getExtras()!=null){
 
             Bundle bundle = getIntent().getExtras();
-            lKonfirmasiPembelian.setText(bundle.getString("lnama"));
+            lNamaPengguna.setText(bundle.getString("lnama"));
 
         }else{
 
-            lKonfirmasiPembelian.setText("Nama Tidak Tersedia");
+            lNamaPengguna.setText("Nama Tidak Tersedia");
 
         }
-
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
-
-        Refuser.child(fAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        DatabaseReference carabayar = FirebaseDatabase.getInstance().getReference().child("carapembayaran");
+        carabayar.child("kcb01").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                {
-                    String ImageUrl = dataSnapshot.child("ImageUrl").getValue().toString();
-                    Picasso.get().load(ImageUrl).into(fotoUserPemesan);
-                }
+                String carabayar = dataSnapshot.child("carabayar").getValue().toString();
+                kpCaraPembayaran.setText(carabayar);
             }
 
             @Override
@@ -128,449 +111,287 @@ public class KonfirmasiPembelian extends AppCompatActivity {
         });
 
 
-        Dataref.child(key).addValueEventListener(new ValueEventListener() {
+        DatabaseReference Dataref = FirebaseDatabase.getInstance().getReference().child("tampilkeranjang");
+        Dataref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
 
-                    String ImageUrl=dataSnapshot.child("ImageUrl").getValue().toString();
-                    String jumlahbarang=dataSnapshot.child("jumlahbarang").getValue().toString();
-                    String konfirmasi=dataSnapshot.child("konfirmasi").getValue().toString();
-                    String jumlahbayar=dataSnapshot.child("jumlahbayar").getValue().toString();
+                String ImageUrl = dataSnapshot.child("ImageUrl").getValue().toString();
+                String keterangan = dataSnapshot.child("noresi").getValue().toString();
+                String status = dataSnapshot.child("status").getValue().toString();
+                String jumlahbayar = dataSnapshot.child("jumlahbayar").getValue().toString();
+                String nama = dataSnapshot.child("namapembeli").getValue().toString();
+                String alamat = dataSnapshot.child("alamatpembeli").getValue().toString();
+                String notelepon = dataSnapshot.child("notelepon").getValue().toString();
+                uid = dataSnapshot.child("uid").getValue().toString();
+                String jumlahpokok = dataSnapshot.child("jumlahpokok").getValue().toString();
 
-                    String uid=dataSnapshot.child("uid").getValue().toString();
-                    String alamatpembeli=dataSnapshot.child("alamatpembeli").getValue().toString();
-                    String namapembeli=dataSnapshot.child("namapembeli").getValue().toString();
-                    String teleponpembeli=dataSnapshot.child("teleponpembeli").getValue().toString();
-                    String tanggallahir=dataSnapshot.child("tanggallahir").getValue().toString();
-                    String ImageUrlPembeli=dataSnapshot.child("ImageUrlPembeli").getValue().toString();
-
-                    String ImageUrlBarang=dataSnapshot.child("ImageUrlBarang").getValue().toString();
-                    String deskripsi=dataSnapshot.child("deskripsi").getValue().toString();
-                    String hargabarang=dataSnapshot.child("hargabarang").getValue().toString();
-                    String jenisbarang=dataSnapshot.child("jenisbarang").getValue().toString();
-                    String kodebarang=dataSnapshot.child("kodebarang").getValue().toString();
-                    String namabarang=dataSnapshot.child("namabarang").getValue().toString();
-                    String ukuranbarang=dataSnapshot.child("ukuranbarang").getValue().toString();
-
-                    if (dataSnapshot.child("noresi").exists())
-                    {
-                        String noresi=dataSnapshot.child("noresi").getValue().toString();
-                        TextView textNoResi = findViewById(R.id.textNoResi);
-                        textNoResi.setText(noresi);
-                    }
-
-                    Picasso.get().load(ImageUrl).into(fotoBuktiTF);
-
-
-                    ImageView fotoPrint = findViewById(R.id.fotoPrint);
-
-
-
-                    Integer l = Integer.valueOf(konfirmasi) ;
-
-                    if (l == 0)
-                    {
-
-                        statusKonfirmasi.setText("Belum Dikonfirmasi");
-                    }
-
-                    if (l == 1)
-                    {
-
-
-                        statusKonfirmasi.setText("Sudah Dikonfirmasi");
-                    }
-
-                    if (l == 2)
-                    {
-
-
-                        statusKonfirmasi.setText("Pembayaran Ditolak");
-                    }
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    fotoPrint.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            if (l == 1) {
-
-                                String kodekeluar = dataSnapshot.child("kodekeluar").getValue().toString();
-///
-
-                                Bitmap bitmap, scaleBitmap;
-                                bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cogan);
-                                scaleBitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, false);
-
-                                PdfDocument pdfDocument = new PdfDocument();
-                                Paint paint = new Paint();
-                                Paint titlePaint = new Paint();
-
-                                PdfDocument.PageInfo pageInfo
-                                        = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
-                                PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-
-                                Canvas canvas = page.getCanvas();
-
-
-                                paint.setColor(Color.BLACK);
-                                paint.setTextSize(30f);
-                                paint.setTextAlign(Paint.Align.RIGHT);
-
-                                Date tanggal = new Date();
-                                SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
-                                String finalTanggal = format.format(tanggal);
-
-                                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
-                                String finalTime = format1.format(tanggal);
-
-                                canvas.drawText("No. Pesanan: " + kodekeluar, 1160, 40, paint);
-                                canvas.drawText("Sosial Media : Ig _Coganstore_", 1160, 80, paint);
-                                canvas.drawText("Tanggal: " + finalTanggal, 1160, 120, paint);
-                                canvas.drawText("Pukul: " + finalTime, 1160, 160, paint);
-
-
-                                titlePaint.setTextAlign(Paint.Align.LEFT);
-                                canvas.drawBitmap(scaleBitmap, 0, 0, paint);
-
-
-                                paint.setTextAlign(Paint.Align.LEFT);
-                                paint.setColor(Color.BLACK);
-                                paint.setTextSize(35f);
-                                canvas.drawText("Nama Pemesan: " + namapembeli, 20, 360, paint);
-                                canvas.drawText("Nomor Tlp: " + teleponpembeli, 20, 400, paint);
-
-                                int pageWidth = 1200;
-
-                                paint.setStyle(Paint.Style.STROKE);
-                                paint.setStrokeWidth(2);
-                                canvas.drawRect(20, 460, pageWidth - 20, 540, paint);
-
-                                paint.setTextAlign(Paint.Align.LEFT);
-                                paint.setStyle(Paint.Style.FILL);
-                                canvas.drawText("No.", 40, 510, paint);
-                                canvas.drawText("Nama Barang", 200, 510, paint);
-                                canvas.drawText("Harga", 640, 510, paint);
-                                canvas.drawText("Ukuran", 900, 510, paint);
-                                canvas.drawText("Jumlah", 1050, 510, paint);
-
-                                canvas.drawLine(180, 470, 180, 520, paint);
-                                canvas.drawLine(620, 470, 620, 520, paint);
-                                canvas.drawLine(890, 470, 890, 520, paint);
-                                canvas.drawLine(1030, 470, 1030, 520, paint);
-
-                                canvas.drawText("1", 40, 670, paint);
-                                canvas.drawText(namabarang, 200, 670, paint);
-                                ///
-                                String setTextView ;
-                                String replace = hargabarang.replaceAll("[Rp. ]","");
-                                if (!replace.isEmpty())
-                                {
-                                    setTextView = formatRupiah(Double.parseDouble(replace));
-
-
-                                }else
-                                {
-
-                                    setTextView = "No data";
-                                }
-
-                                ///
-                                canvas.drawText(setTextView, 640, 670, paint);
-                                canvas.drawText(ukuranbarang, 900, 670, paint);
-
-                                paint.setTextAlign(Paint.Align.RIGHT);
-                                canvas.drawText(jumlahbarang, pageWidth - 40, 670, paint);
-                                paint.setTextAlign(Paint.Align.LEFT);
-
-
-                                canvas.drawLine(400, 820, pageWidth - 20, 820, paint);
-
-                                paint.setColor(Color.rgb(247, 147, 30));
-                                canvas.drawRect(680, 870, pageWidth - 20, 970, paint);
-
-                                paint.setColor(Color.BLACK);
-                                paint.setTextSize(50f);
-                                paint.setTextAlign(Paint.Align.LEFT);
-                                canvas.drawText("Total", 700, 935, paint);
-                                paint.setTextAlign(Paint.Align.RIGHT);
-                                ///
-                                String setTextView1 ;
-                                String replace1 = jumlahbayar.replaceAll("[Rp. ]","");
-                                if (!replace1.isEmpty())
-                                {
-                                    setTextView1 = formatRupiah(Double.parseDouble(replace1));
-
-
-                                }else
-                                {
-
-                                    setTextView1 = "No data";
-                                }
-
-                                ///
-                                canvas.drawText(setTextView1, pageWidth - 40, 935, paint);
-
-                                paint.setColor(Color.BLACK);
-                                paint.setTextSize(50f);
-                                paint.setTextAlign(Paint.Align.RIGHT);
-                                canvas.drawText("Sudah Dibayar", pageWidth - 40, 1040, paint);
-
-                                pdfDocument.finishPage(page);
-
-                                File file = new File(Environment.getExternalStorageDirectory(), "/Pesanan" + kodekeluar + ".pdf");
-                                try {
-                                    pdfDocument.writeTo(new FileOutputStream(file));
-                                    Toast.makeText(KonfirmasiPembelian.this, "nota sudah dibuat", Toast.LENGTH_LONG).show();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                pdfDocument.close();
-                            }
-                            if (l == 0)
-                            {
-                                Toast.makeText(KonfirmasiPembelian.this, "Tidak Bisa Cetak, Konfirmasi Dulu Pembayaran User", Toast.LENGTH_LONG).show();
-                            }
-                            if (l == 2)
-                            {
-                                Toast.makeText(KonfirmasiPembelian.this, "Tidak Bisa Cetak, Pembayaran User Sudah Ditolak", Toast.LENGTH_LONG).show();
-                            }
+                kpPrint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (Integer.valueOf(status) == 2){
+                            Intent intent = new Intent(KonfirmasiPembelian.this, KonfirmasiPembelianPrint.class);
+                            String nama = lNamaPengguna.getText().toString();
+                            intent.putExtra("lnama", nama);
+                            intent.putExtra("key_temp", key);
+                            intent.putExtra("uid", uid);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(KonfirmasiPembelian.this, " Tidak Bisa Print, Karena Tidak Dikonfirmasi ", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                    });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    }
+                });
 
 
-                    fotoTolak.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                if (Integer.valueOf(status) != 1){
+                    kpKeterangan.setEnabled(false);
+                }else{
+                    kpKeterangan.setEnabled(true);
+                }
+                kpSimpan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                            String noresi   = textNoResi.getText().toString().trim();
+                        if (Integer.valueOf(status) == 1){
 
-                            if (TextUtils.isEmpty(noresi)) {
-                                textNoResi.setError("Tolong isi No. Resi/Ket. Tolak Sebelum Menolak Konfirmasi");
+                            String keterangan = kpKeterangan.getText().toString();
+                            if (TextUtils.isEmpty(keterangan)){
+                                kpKeterangan.setError("Tolong isi No Resi");
                                 return;
                             }
+                            dataSnapshot.getRef().child("noresi").setValue(keterangan);
+                            dataSnapshot.getRef().child("status").setValue("2");
 
-                            if (l == 0)
-                            {
-                                Date tanggal = new Date();
-                                SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
-                                SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
-                                String finalTanggal = format.format(tanggal);
-                                String finalTanggal1 = format1.format(tanggal);
+                            Date tanggal = new Date();
+                            SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
+                            String finalTanggal = format.format(tanggal);
 
-                                dataSnapshot.getRef().child("tanggalditolak").setValue(finalTanggal);
-                                dataSnapshot.getRef().child("bulantahun").setValue(finalTanggal1);
-                                dataSnapshot.getRef().child("konfirmasi").setValue("2");
-                                dataSnapshot.getRef().child("noresi").setValue(textNoResi.getText().toString());
+                            SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
+                            String finalTime = format1.format(tanggal);
 
-                                DatabaseReference Reftampil = FirebaseDatabase.getInstance().getReference().child("tampil");
-                                Reftampil.child("1"+kodebarang+ukuranbarang).addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                            dataSnapshot.getRef().child("tanggal").setValue(finalTanggal);
+                            dataSnapshot.getRef().child("waktu").setValue(finalTime);
 
-                                        Integer itu= Integer.valueOf(dataSnapshot1.child("jumlahbarang").getValue().toString());
-                                        String hasil = String.valueOf(itu+Integer.valueOf(jumlahbarang));
-                                        dataSnapshot1.getRef().child("jumlahbarang").setValue(hasil);
-                                        Toast.makeText(KonfirmasiPembelian.this, " Penolakan Berhasil Dilakukan " , Toast.LENGTH_SHORT).show();
-
-                                        Intent intent=new Intent(KonfirmasiPembelian.this,KonfirmasiPembelianHalaman.class);
-                                        String nama = lKonfirmasiPembelian.getText().toString();
-                                        intent.putExtra("lnama", nama);
-                                        startActivity(intent);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
+                            DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
+                            Refkonfirmasi.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                                    for (DataSnapshot postSnapshot: dataSnapshot1.getChildren()) {
+                                        postSnapshot.getRef().child("konfirmasi").setValue("2");
 
                                     }
-                                });
-
-                            }
-
-                            if (l == 1)
-                            {
-
-                                Toast.makeText(KonfirmasiPembelian.this, " Tolak Tidak Bisa Dilakukan, Status Sudah Dikonfirmasi " , Toast.LENGTH_SHORT).show();
-
-                            }
-
-                            if (l == 2)
-                            {
-
-                                Toast.makeText(KonfirmasiPembelian.this, " Tolak Tidak Bisa Dilakukan, Status Sudah Ditolak " , Toast.LENGTH_SHORT).show();
-
-                            }
-
-
-
-
-                        }
-                    });
-///
-                    String setTextView2 ;
-                    String replace = jumlahbayar.replaceAll("[Rp. ]","");
-                    if (!replace.isEmpty())
-                    {
-                        setTextView2= formatRupiah(Double.parseDouble(replace));
-
-
-                    }else
-                    {
-
-                        setTextView2 = "No data";
-                    }
-
-                    ///
-                    textBayar.setText(setTextView2);
-                    textBarang.setText(namabarang);
-                    textUkuranBarang.setText(ukuranbarang);
-                    textTotalQTY.setText(jumlahbarang);
-                    textNamaPemesan.setText(namapembeli);
-                    textAlamatPemesan.setText(alamatpembeli);
-                    textNoteleponPemesan.setText(teleponpembeli);
-
-
-                    fotoKonfirmasi.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-
-                            if (l == 0)
-                            {
-                                String noresi   = textNoResi.getText().toString().trim();
-
-                                if (TextUtils.isEmpty(noresi)){
-                                    textNoResi.setError("Tolong isi No. Resi/Ket. Tolak Sebelum Mengkonfirmasi");
-                                    return;
                                 }
 
-                                ///
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                                String noresi1   = textNoResi.getText().toString().trim();
+                                }
+                            });
 
-                                Dataref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        dataSnapshot.getRef().child("konfirmasi").setValue("1");
-                                        dataSnapshot.getRef().child("noresi").setValue(noresi1);
-                                        statusKonfirmasi.setText("sudah");
-                                        fotoKonfirmasi.setEnabled(false);
-                                        fotoPrint.setEnabled(true);
-                                        Toast.makeText(KonfirmasiPembelian.this, " Konfirmasi Berhasil Dilakukan " , Toast.LENGTH_SHORT).show();
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-
-
-                                ///
-
-                                Refkodekeluar.child("kodekeluar").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
-
-                                        Integer kodekeluar=Integer.valueOf(dataSnapshot2.child("kodekeluar").getValue().toString());
-                                        String hasil = String.valueOf(kodekeluar+1);
-                                        dataSnapshot2.getRef().child("kodekeluar").setValue(hasil);
-                                        dataSnapshot.getRef().child("kodekeluar").setValue(hasil);
-                                        String noresi1   = textNoResi.getText().toString().trim();
-
-                                        Refbarangkeluar.child("1"+"bk"+hasil).addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
-                                                Date tanggal = new Date();
-                                                SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
-                                                SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
-                                                String finaltanggal = format.format(tanggal);
-                                                String finaltanggal1 = format1.format(tanggal);
-                                                dataSnapshot3.getRef().child("kodebarang").setValue(kodebarang);
-                                                dataSnapshot3.getRef().child("jenisbarang").setValue(jenisbarang);
-                                                dataSnapshot3.getRef().child("ImageUrlBarang").setValue(ImageUrlBarang);
-                                                dataSnapshot3.getRef().child("namabarang").setValue(namabarang);
-                                                dataSnapshot3.getRef().child("deskripsi").setValue(deskripsi);
-                                                dataSnapshot3.getRef().child("hargabarang").setValue(hargabarang);
-
-                                                dataSnapshot3.getRef().child("uid").setValue(uid);
-                                                dataSnapshot3.getRef().child("alamatpembeli").setValue(alamatpembeli);
-                                                dataSnapshot3.getRef().child("teleponpembeli").setValue(teleponpembeli);
-                                                dataSnapshot3.getRef().child("namapembeli").setValue(namapembeli);
-                                                dataSnapshot3.getRef().child("tanggallahir").setValue(tanggallahir);
-                                                dataSnapshot3.getRef().child("ImageUrlPembeli").setValue(ImageUrlPembeli);
-
-                                                dataSnapshot3.getRef().child("bulantahun").setValue(finaltanggal1);
-                                                dataSnapshot3.getRef().child("tanggalkeluar").setValue(finaltanggal);
-                                                dataSnapshot3.getRef().child("noresi1").setValue(noresi1);
-                                                dataSnapshot3.getRef().child("jumlahbarang").setValue(jumlahbarang);
-                                                dataSnapshot3.getRef().child("ukuranbarang").setValue(ukuranbarang);
-                                                dataSnapshot3.getRef().child("ImageUrlBuktitf").setValue(ImageUrl);
-                                                dataSnapshot3.getRef().child("jumlahbayar").setValue(jumlahbayar);
-                                                dataSnapshot3.getRef().child("kodebarangkeluar").setValue("bk"+hasil);
-
-                                                //////////////////////////////////
-                                                DatabaseReference Reftampil = FirebaseDatabase.getInstance().getReference().child("tampil");
-                                                Reftampil.child("1"+kodebarang+ukuranbarang).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
-                                                        String hargabarangmasuk=dataSnapshot1.child("hargabarangmasuk").getValue().toString();
-                                                        dataSnapshot3.getRef().child("hargabarangmasuk").setValue(hargabarangmasuk);
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                                    }
-                                                });
-                                                ///////////////////////////////////
-
-
-
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-
-
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-
-                            if (l == 1)
-                            {
-
-                                Toast.makeText(KonfirmasiPembelian.this, " Konfirmasi Tidak Bisa Dilakukan, Status Sudah Dikonfirmasi " , Toast.LENGTH_SHORT).show();
-                            }
-
-                            if (l == 2)
-                            {
-
-                                Toast.makeText(KonfirmasiPembelian.this, " Konfirmasi Tidak Bisa Dilakukan, Status Sudah Ditolak " , Toast.LENGTH_SHORT).show();
-
-                            }
-
-
-
+                            Toast.makeText(KonfirmasiPembelian.this, " Berhasil Di Konfirmasi ", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(KonfirmasiPembelian.this, KonfirmasiPembelianHalaman.class);
+                            String nama = lNamaPengguna.getText().toString();
+                            intent.putExtra("lnama", nama);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(KonfirmasiPembelian.this, " Tidak Bisa Konfirmasi, Karena Sudah Di Tolak ", Toast.LENGTH_SHORT).show();
                         }
-                    });
 
 
+                        ///
+                        DatabaseReference Refkodekeluar = FirebaseDatabase.getInstance().getReference().child("kodekeluar");
+                        Refkodekeluar.child("kodekeluar").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+
+                                Integer kodekeluar=Integer.valueOf(dataSnapshot2.child("kodekeluar").getValue().toString());
+                                String hasil = String.valueOf(kodekeluar+1);
+                                dataSnapshot2.getRef().child("kodekeluar").setValue(hasil);
+                                dataSnapshot.getRef().child("kodekeluar").setValue(hasil);
+
+                                DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("penjualan");
+                                Refbarangkeluar.child("1"+"bk"+hasil).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                                        Date tanggal = new Date();
+                                        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+                                        SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
+                                        String finaltanggal = format.format(tanggal);
+                                        String finaltanggal1 = format1.format(tanggal);
+                                        String keterangan1 = kpKeterangan.getText().toString();
+
+                                        dataSnapshot3.getRef().child("nonota").setValue(key);
+                                        dataSnapshot3.getRef().child("noresi").setValue(keterangan1);
+                                        dataSnapshot3.getRef().child("namapembeli").setValue(nama);
+                                        dataSnapshot3.getRef().child("jumlahbayar").setValue(jumlahbayar);
+                                        dataSnapshot3.getRef().child("jumlahpokok").setValue(jumlahpokok);
+                                        dataSnapshot3.getRef().child("kodepenjualan").setValue("bk"+hasil);
+
+                                        dataSnapshot3.getRef().child("uid").setValue(uid);
+
+                                        dataSnapshot3.getRef().child("bulantahun").setValue(finaltanggal1);
+                                        dataSnapshot3.getRef().child("tanggalkeluar").setValue(finaltanggal);
+
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                        /////////////
+
+                    }
+                });
+
+                kpTolak.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        if (Integer.valueOf(status) == 1){
+
+                            String keterangan = kpKeterangan.getText().toString();
+                            if (TextUtils.isEmpty(keterangan)){
+                                kpKeterangan.setError("Tolong isi Keterangan Tolak");
+                                return;
+                            }
+                            dataSnapshot.getRef().child("noresi").setValue(keterangan);
+                            dataSnapshot.getRef().child("status").setValue("3");
+                            DatabaseReference Refkonfirmasi = FirebaseDatabase.getInstance().getReference().child("konfirmasipembayaran");
+                            Refkonfirmasi.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
+                                    for (DataSnapshot postSnapshot: dataSnapshot1.getChildren()) {
+                                        postSnapshot.getRef().child("konfirmasi").setValue("3");
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            Toast.makeText(KonfirmasiPembelian.this, " Berhasil Ditolak ", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(KonfirmasiPembelian.this, Dummy.class);
+                            String nama = lNamaPengguna.getText().toString();
+                            intent.putExtra("lnama", nama);
+                            intent.putExtra("uid", uid);
+                            intent.putExtra("key", key);
+                            startActivity(intent);
+
+                        }else{
+                            Toast.makeText(KonfirmasiPembelian.this, " Tidak Bisa Ditolak, Karena Sudah Di Konfirmasi ", Toast.LENGTH_SHORT).show();
+                        }
+
+                        ///
+                        DatabaseReference Refkodetolak = FirebaseDatabase.getInstance().getReference().child("kodetolak");
+                        Refkodetolak.child("kodetolak").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+
+                                Integer kodekeluar=Integer.valueOf(dataSnapshot2.child("kodetolak").getValue().toString());
+                                String hasil = String.valueOf(kodekeluar+1);
+                                dataSnapshot2.getRef().child("kodetolak").setValue(hasil);
+                                dataSnapshot.getRef().child("kodetolak").setValue(hasil);
+
+                                DatabaseReference Refbarangkeluar = FirebaseDatabase.getInstance().getReference().child("tolak");
+                                Refbarangkeluar.child("1"+"t"+hasil).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                                        Date tanggal = new Date();
+                                        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+                                        SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
+                                        String finaltanggal = format.format(tanggal);
+                                        String finaltanggal1 = format1.format(tanggal);
+                                        String keterangan1 = kpKeterangan.getText().toString();
+
+                                        dataSnapshot3.getRef().child("noresi").setValue(key);
+                                        dataSnapshot3.getRef().child("nonota").setValue(keterangan1);
+                                        dataSnapshot3.getRef().child("namapembeli").setValue(nama);
+                                        dataSnapshot3.getRef().child("jumlahbayar").setValue(jumlahbayar);
+                                        dataSnapshot3.getRef().child("kodepenjualan").setValue("bk"+hasil);
+
+                                        dataSnapshot3.getRef().child("uid").setValue(uid);
+
+                                        dataSnapshot3.getRef().child("bulantahun").setValue(finaltanggal1);
+                                        dataSnapshot3.getRef().child("tanggalkeluar").setValue(finaltanggal);
+
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                        /////////////
+
+                    }
+                });
+
+
+                Picasso.get().load(ImageUrl).into(kpPembayaran);
+                kpKeterangan.setText(keterangan);
+                if (Integer.valueOf(status) == 1){
+                    kpStatus.setText("Belum Dikonfirmasi");
                 }
+                if (Integer.valueOf(status) == 2){
+                    kpStatus.setText("Dikonfirmasi");
+                }
+                if (Integer.valueOf(status) == 3){
+                    kpStatus.setText("Ditolak");
+                }
+                kpNama.setText(nama);
+                kpAlamat.setText(alamat);
+                kpNoTelepon.setText(notelepon);
+
+                ///
+                String setTextView ;
+                String replace = jumlahbayar.replaceAll("[Rp. ]","");
+                if (!replace.isEmpty())
+                {
+                    setTextView = formatRupiah(Double.parseDouble(replace));
+
+
+                }else
+                {
+
+                    setTextView = "No data";
+                }
+
+                ///
+                kpJumlahBayar.setText(setTextView);
+
             }
 
             @Override
@@ -578,14 +399,13 @@ public class KonfirmasiPembelian extends AppCompatActivity {
 
             }
         });
-
 
 
     }
 
     public void kembali(View view){
         Intent intent=new Intent(KonfirmasiPembelian.this,KonfirmasiPembelianHalaman.class);
-        String nama = lKonfirmasiPembelian.getText().toString();
+        String nama = lNamaPengguna.getText().toString();
         intent.putExtra("lnama", nama);
         startActivity(intent);
     }

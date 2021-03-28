@@ -121,7 +121,7 @@ public class LaporanPenjualan extends AppCompatActivity {
 
         }
 
-        Dataref= FirebaseDatabase.getInstance().getReference().child("barangkeluar");
+        Dataref= FirebaseDatabase.getInstance().getReference().child("penjualan");
         bulanTahunPenjualan=findViewById(R.id.bulanTahunPenjualan);
         totalHargaP=findViewById(R.id.totalHargaP);
         recyclerLapPenjualan=findViewById(R.id.recyclerLapPenjualan);
@@ -129,7 +129,7 @@ public class LaporanPenjualan extends AppCompatActivity {
         recyclerLapPenjualan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         String tanggal = bulanTahunPenjualan.getText().toString();
-        Query query = FirebaseDatabase.getInstance().getReference("barangkeluar")
+        Query query = FirebaseDatabase.getInstance().getReference("penjualan")
                 .orderByChild("bulantahun")
                 .startAt(tanggal).endAt(tanggal+"\uf8ff");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -151,13 +151,11 @@ public class LaporanPenjualan extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
 
                     Map<String,Object> map = (Map<String, Object>) ds.getValue();
-                    Object hargabarang =  map.get("hargabarang");
-                    Object jumlah = map.get("jumlahbarang");
+                    Object jumlah = map.get("jumlahbayar");
 
-                    int pValue = Integer.parseInt(String.valueOf(hargabarang));
                     int jValue = Integer.parseInt(String.valueOf(jumlah));
-                    int sumi = pValue * jValue ;
-                    sum += sumi;
+
+                    sum += jValue;
                     Log.d("Sum",String.valueOf(sum));
 
                     String setTextView ;
@@ -202,15 +200,14 @@ public class LaporanPenjualan extends AppCompatActivity {
         adapter=new FirebaseRecyclerAdapter<LaporanPenjualanClass, LaporanPenjualanHolder> (options) {
             @Override
             protected void onBindViewHolder(@NonNull LaporanPenjualanHolder holder, final int position, @NonNull LaporanPenjualanClass model) {
-                holder.kodeBK.setText(model.getKodebarangkeluar());
-                holder.namaBK.setText(model.getNamabarang());
-                holder.namaP.setText(model.getNamapembeli());
-                holder.tanggalBK.setText(model.getTanggalkeluar());
-                holder.qtyBK.setText(model.getJumlahbarang());
+                holder.kodePenjualan.setText(model.getKodepenjualan());
+                holder.noNota.setText(model.getNonota());
+                holder.namaPembeli.setText(model.getNamapembeli());
+                holder.tanggalPenjualan.setText(model.getTanggalkeluar());
 
                 ///
                 String setTextView ;
-                String replace = model.getHargabarang().replaceAll("[.]","");
+                String replace = model.getJumlahbayar().replaceAll("[.]","");
                 if (!replace.isEmpty())
                 {
                     setTextView = formatRupiah(Double.parseDouble(replace));
@@ -222,25 +219,7 @@ public class LaporanPenjualan extends AppCompatActivity {
                     setTextView = "No data";
                 }
 
-                ///
-
-                String setView ;
-                String replace1 = String.valueOf(Integer.valueOf(model.getHargabarang())*Integer.valueOf(model.getJumlahbarang())).replaceAll("[.]","");
-                if (!replace1.isEmpty())
-                {
-                    setView = formatRupiah(Double.parseDouble(replace1));
-
-
-                }else
-                {
-
-                    setView = "No data";
-                }
-
-                ///
-                holder.hargaBK.setText(setTextView);
-                holder.totalBK.setText(setView);
-
+                holder.jumlahBayarPenjualan.setText(setTextView);
 
 
                 holder.v.setOnClickListener(new View.OnClickListener() {

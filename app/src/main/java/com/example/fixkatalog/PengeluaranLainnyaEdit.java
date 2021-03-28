@@ -48,6 +48,9 @@ public class PengeluaranLainnyaEdit extends AppCompatActivity {
         fotoSimpanPengeluaranEdit=findViewById(R.id.fotoSimpanPengeluaranEdit);
         fotoBersihkanPengeluaranEdit=findViewById(R.id.fotoBersihkanPengeluaranEdit);
 
+        EditText bulanEdit = findViewById(R.id.bulanEdit);
+
+
         ///
         textBiayaListrikEdit.addTextChangedListener(new TextWatcher() {
             String setTextView ;
@@ -275,12 +278,14 @@ public class PengeluaranLainnyaEdit extends AppCompatActivity {
                 String biayastiker = dataSnapshot.child("biayastiker").getValue().toString();
                 String biayatoko = dataSnapshot.child("biayatoko").getValue().toString();
                 String biayawifi = dataSnapshot.child("biayawifi").getValue().toString();
+                String bulantahun = dataSnapshot.child("bulantahun").getValue().toString();
 
                 textBiayaListrikEdit.setText(biayalistrik);
                 textBiayaStikerEdit.setText(biayastiker);
                 textBiayaTokoEdit.setText(biayatoko);
                 textBiayaWifiEdit.setText(biayawifi);
                 textBiayaLainnyaEdit.setText(biayalainnya);
+                bulanEdit.setText(bulantahun);
 
                 simpan(key);
 
@@ -366,20 +371,20 @@ public class PengeluaranLainnyaEdit extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Date tanggal = new Date();
                         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
-                        SimpleDateFormat format1 = new SimpleDateFormat("MM yyyy");
                         String finalTanggal = format.format(tanggal);
-                        String finalTanggal1 = format1.format(tanggal);
+
 
                         String biayatotal = String.valueOf(Integer.valueOf(biayalistrik1)+Integer.valueOf(biayastiker1)
                                 +Integer.valueOf(biayatoko1)+Integer.valueOf(biayawifi1)+Integer.valueOf(biayalainnya1));
-
+                        EditText bulanEdit = findViewById(R.id.bulanEdit);
+                        String bulanedit = bulanEdit.getText().toString();
                         dataSnapshot.getRef().child("biayalistrik").setValue(biayalistrik1);
                         dataSnapshot.getRef().child("biayastiker").setValue(biayastiker1);
                         dataSnapshot.getRef().child("biayatoko").setValue(biayatoko1);
                         dataSnapshot.getRef().child("biayawifi").setValue(biayawifi1);
                         dataSnapshot.getRef().child("biayalainnya").setValue(biayalainnya1);
                         dataSnapshot.getRef().child("tanggal").setValue(finalTanggal);
-                        dataSnapshot.getRef().child("bulantahun").setValue(finalTanggal1);
+                        dataSnapshot.getRef().child("bulantahun").setValue(bulanedit);
                         dataSnapshot.getRef().child("totalbiaya").setValue(biayatotal);
 
                         Intent intent=new Intent(PengeluaranLainnyaEdit.this,PengeluaranLainnyaHalaman.class);

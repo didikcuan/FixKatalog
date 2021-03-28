@@ -47,7 +47,8 @@ public class MenuCelana extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_celana);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("tampil");
 
         recyclerViewCelana=findViewById(R.id.recyclerViewCelana);
@@ -274,5 +275,19 @@ public class MenuCelana extends AppCompatActivity {
         String[] split = formatrupiah.split(",");
         int length = split[0].length();
         return split[0].substring(0,2)+". "+split[0].substring(2,length);
+    }
+
+    public void keranjang(View view){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            Intent intent = new Intent(MenuCelana.this, Keranjang.class);
+            String nama = namaUserCelana.getText().toString();
+            intent.putExtra("lnama", nama);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText(MenuCelana.this, " Harap Login Dulu ", Toast.LENGTH_SHORT).show();
+        }
     }
 }

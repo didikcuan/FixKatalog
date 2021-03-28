@@ -47,7 +47,8 @@ public class MenuBaju extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_baju);
-
+        onRestart();
+        onStart();
         Dataref= FirebaseDatabase.getInstance().getReference().child("tampil");
         searchNamaProdukBaju=findViewById(R.id.searchNamaProdukBaju);
         recyclerViewBaju=findViewById(R.id.recyclerViewBaju);
@@ -273,5 +274,18 @@ public class MenuBaju extends AppCompatActivity {
         String[] split = formatrupiah.split(",");
         int length = split[0].length();
         return split[0].substring(0,2)+". "+split[0].substring(2,length);
+    }
+    public void keranjang(View view){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            Intent intent = new Intent(MenuBaju.this, Keranjang.class);
+            String nama = namaUserBaju.getText().toString();
+            intent.putExtra("lnama", nama);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText(MenuBaju.this, " Harap Login Dulu ", Toast.LENGTH_SHORT).show();
+        }
     }
 }

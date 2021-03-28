@@ -78,6 +78,14 @@
         <activity android:name=".LaporanLabaRugi"/>
         <activity android:name=".LapBarangDipesanHabis"/>
         <activity android:name=".LapPembelianDitolak"/>
+
+        <activity android:name=".Keranjang"/>
+        <activity android:name=".KeranjangEdit"/>
+        <activity android:name=".KeranjangHalaman"/>
+        <activity android:name=".KeranjangCek"/>
+
+        <activity android:name=".KonfirmasiPembelianPrint"/>
+        <activity android:name=".Dummy"/>
     </application>
 
 </manifest>
